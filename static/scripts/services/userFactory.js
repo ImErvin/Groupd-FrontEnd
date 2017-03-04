@@ -1,7 +1,10 @@
 angular.module('groupdApp')
-.factory('APIFactory' , function($http, $q){
+.factory('UserFactory' ,['$http', '$q', function($http, $q){
+
+    var user = {};
+
     
-    var createUser = function(user){
+    user.createUser = function(user){
         var deferred = $q.defer();
 
 
@@ -25,7 +28,7 @@ angular.module('groupdApp')
         return deferred.promise;
     }
 
-    var loginUser = function(username){
+    user.loginUser = function(username){
         var deferred = $q.defer();
 
         $http({
@@ -44,7 +47,6 @@ angular.module('groupdApp')
     }
 
     return{
-        createUser: createUser,
-        loginUser: loginUser
+        user: user
     }
-});
+}]);

@@ -3,15 +3,16 @@
 angular.module('groupdApp',['ngAnimate','ngCookies','ngMessages','ngResource','ngRoute','ngSanitize'])
 .config(function($routeProvider, $locationProvider){
     $routeProvider
-      .when('/', {
+      .when('/welcome', {
         templateUrl: 'static/views/main.html',
         controller: 'MainCtrl',
-        controllerAs: 'main'
+        controllerAs: 'main',
       })
       .when('/about', {
         templateUrl: 'static/views/about.html',
         controller: 'AboutCtrl',
-        controllerAs: 'about'
+        controllerAs: 'about',
+        authenticated: true
       })
       .when('/signup', {
         templateUrl: 'static/views/signup.html',
@@ -24,8 +25,19 @@ angular.module('groupdApp',['ngAnimate','ngCookies','ngMessages','ngResource','n
         controllerAs: 'login'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/welcome'
       });
 
       $locationProvider.hashPrefix('');
-});
+})
+
+.run(['$rootScope', '$location', 'AuthFactory', function($rootScope, $location, AuthFactory){
+  $rootScope.$on('$routeChangeStart', function(event, nextRoute, currRoute){
+    if(nextRoute.$$route.authenticated){
+      var authenticated = AuthFactory.getAuth();
+      if(!authenticated){
+        $location.path("/login");
+      }
+    }
+  })
+}]);

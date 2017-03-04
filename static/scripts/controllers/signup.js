@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('groupdApp')
-  .controller('SignupCtrl', function ($scope, APIFactory) {
+  .controller('SignupCtrl',['UserFactory', '$scope', '$location',
+  function (UserFactory, $scope, $location) {
     var user = {
       email: "",
       username: "",
@@ -12,7 +13,7 @@ angular.module('groupdApp')
     }
 
     var createUser = function(){
-      APIFactory.createUser(user).then(function(d){
+      UserFactory.user.createUser(user).then(function(d){
         $scope.message = d.data.message;
         $scope.alert = true;
       });
@@ -21,4 +22,4 @@ angular.module('groupdApp')
     $scope.createUser = createUser;
     $scope.user = user;
     $scope.alert = false;
-  });
+  }]);

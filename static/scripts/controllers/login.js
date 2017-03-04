@@ -1,18 +1,25 @@
 'use strict';
 
 angular.module('groupdApp')
-  .controller('LoginCtrl', function (APIFactory, $scope) {
+  .controller('LoginCtrl', ['UserFactory', 'AuthFactory', '$scope', '$location', 
+  function (UserFactory, AuthFactory, $scope, $location) {
     var user = {
       username: "",
-      password: ""
+      password: "",
+      token: false
     }
 
     var loginUser = function(){
-      APIFactory.loginUser(user.username).then(function(d){
+      UserFactory.user.loginUser(user.username).then(function(d){
         if(d.data.username == user.username && d.data.password == user.password){
           $scope.message = "Logged In!";
+          user.token = true;
+          AuthFactory.setAuth(user.token);
+          $location.path('/about');
         }else{
-          $scope.message = "Username or Password is incorrect."
+          $scope.message = "Username or Password is incorrect.";
+          user.token = false;
+          AuthFactory.setAuth(user.token);
         }
       });
     }
@@ -20,4 +27,4 @@ angular.module('groupdApp')
     $scope.user = user;
     $scope.loginUser = loginUser;
 
-  });
+  }]);
