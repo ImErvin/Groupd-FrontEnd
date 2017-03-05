@@ -10,5 +10,7 @@ angular.module('groupdApp')
         return auth.token;
     }
 
-    return auth;
+    return{
+        auth : auth
+    } 
 }]);

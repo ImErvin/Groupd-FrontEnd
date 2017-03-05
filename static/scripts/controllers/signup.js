@@ -13,13 +13,12 @@ angular.module('groupdApp')
     }
 
     var createUser = function(){
-      UserFactory.user.createUser(user).then(function(d){
+      UserFactory.user.create(user).then(function(d){
         $scope.message = d.data.message;
-        $scope.alert = true;
       });
     }
 
     $scope.createUser = createUser;
     $scope.user = user;
-    $scope.alert = false;
+    $scope.message = "Enter required (*) fields.";
   }]);

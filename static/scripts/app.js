@@ -8,10 +8,10 @@ angular.module('groupdApp',['ngAnimate','ngCookies','ngMessages','ngResource','n
         controller: 'MainCtrl',
         controllerAs: 'main',
       })
-      .when('/about', {
-        templateUrl: 'static/views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about',
+      .when('/home', {
+        templateUrl: 'static/views/home.html',
+        controller: 'HomeCtrl',
+        controllerAs: 'home',
         authenticated: true
       })
       .when('/signup', {
@@ -34,7 +34,7 @@ angular.module('groupdApp',['ngAnimate','ngCookies','ngMessages','ngResource','n
 .run(['$rootScope', '$location', 'AuthFactory', function($rootScope, $location, AuthFactory){
   $rootScope.$on('$routeChangeStart', function(event, nextRoute, currRoute){
     if(nextRoute.$$route.authenticated){
-      var authenticated = AuthFactory.getAuth();
+      var authenticated = AuthFactory.auth.getAuth();
       if(!authenticated){
         $location.path("/login");
       }
