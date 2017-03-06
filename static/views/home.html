@@ -1,21 +1,113 @@
-<div class="jumbotron bodyJumbotron">
-    <h1 style="text-align: center;">Projects</h1>
-  <div class="container">
-    <hr>
-    <div>
+
+    <div class="container">
+    <div class="row profile">
+		<div class="col-md-9">
+            <div class="profile-content">
+                <div class="card" style="text-align:left !important;"ng-repeat="project in projects">
+                <div class="card-block">
+                    <h4 class="card-title">{{project.projectName}}</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">{{project.projectDesc}}</h6>
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+                </div>
+                
+            </div>
+		</div>
+        <div class="col-md-3">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+				<div class="profile-userpic">
+					<img src="static/images/fractal.png" class="img-responsive" alt="">
+				</div>
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div class="profile-usertitle-name">
+						{{user.firstName}}{{user.surname}}
+					</div>
+					<div class="profile-usertitle-job">
+						{{Developer}}
+					</div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+				<!-- SIDEBAR BUTTONS -->
+				<div class="profile-userbuttons">
+					<button type="button" class="btn btn-success btn-sm">Follow</button>
+					<button type="button" class="btn btn-danger btn-sm">Message</button>
+				</div>
+				<!-- END SIDEBAR BUTTONS -->
+				<!-- SIDEBAR MENU -->
+				<div class="profile-usermenu">
+					<ul class="nav flex-column" id="exCollapsingNavbar3">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Create Project</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">User Settings</a>
+                        </li>
+                    </ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+		</div>
+	</div>
+</div>
+
+
+        <!--<div ng-repeat="project in projects">
+            <div class="card">
+                <div class="card-header">
+                    Featured
+                </div>
+                <div class="card-block">
+                    <h4 class="card-title">{{project.projectName}}</h4>
+                    <p class="card-text">{{project.projectDesc}}</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>-->
+
+            <!--<div class="row">
+                <div class="col"  ng-repeat="project in projects track by $index">
+                    <div class="card custom-card">
+                        <div class="card-block">
+                            <h4 class="card-title">{{project.projectName}}</h4>
+                            <p class="card-text">{{project.projectDesc}}</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                    <div class="w-100" ng-if="$index % 2 == 0"></div>
+                </div>
+            </div>
+        </div>-->
+
+        <!-- Adapted page layout from :https://github.com/BlackrockDigital/startbootstrap-shop-homepage/blob/master/index.html -->
+        <!--<div class="container">
+        
         <div class="row">
-            <div class="col"  ng-repeat="project in projects">
-                <div class="card">
-                    <img class="card-img-top" src="http://www.aaroncastiglione.com/wp-content/uploads/2015/07/Blog-Artwork-UX-Feature.png" alt="Card image cap">
-                    <div class="card-block">
-                        <h4 class="card-title">{{project.projectName}}</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-sm-4 col-lg-4 col-md-4" ng-repeat="project in projects">
+                        <div class="card custom-card">
+                            <div class="card-header custom-card-header">
+                                {{project.projectName}}
+                            </div>
+                            <div class="card-block">
+                                <h4 class="card-title">{{project.projectName}}</h4>
+                                <p class="card-text">{{project.projectDesc}}</p>
+                                <a href="#" class="btn btn-primary btn-block">Go somewhere</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="col-md-3" style="border: 5px solid; background-color: #f1f1f1; color:#1f1f1f; ">
+                <p class="lead">{{username}}</p>
+            </div>
         </div>
-    </div>
-    
-  </div>
-</div>
+    </div>-->
+
+

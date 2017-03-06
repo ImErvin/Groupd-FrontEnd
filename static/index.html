@@ -24,13 +24,15 @@
 
   <body class="indexBody" ng-app="groupdApp"> 
     <div ng-cloak>
+      
       <!-- Basic template adapted from - http://v4-alpha.getbootstrap.com/examples/jumbotron/  -->
       <nav class="navbar navbar-toggleable-md navbar-inverse navColor sticky-top bg-inverse" ng-controller="HeaderCtrl">
-        <button class="navbar-toggler navbar-toggler-right header-button" type="button" data-toggle="collapse" data-target="#collapse" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="container">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#collapse" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand" href="#/welcome">
-            <img src="static/images/mainLogo6.png" width="204" height="53" class="d-inline-block align-top" alt="">
+            <img src="static/images/mainLogo1.png" width="204" height="53" class="d-inline-block align-top" alt="">
         </a>
         
         <div class="collapse navbar-collapse" id="collapse">
@@ -45,6 +47,7 @@
           </form>
         </div>
       </nav>
+    </div>
     </div>
 
     <ng-view></ng-view>

@@ -9,11 +9,12 @@ angular.module('groupdApp')
       $scope.projects = [];
       for(var n in d){
         $scope.projects.push(d[n]);
+        console.log($scope.projects);
       }
     })
    // }
 
-    $scope.username = JSON.parse($cookies.get('userCookie')).firstName;
+    $scope.user = JSON.parse($cookies.get('userCookie'));
 
     //$scope.logProjects = logProjects;
 

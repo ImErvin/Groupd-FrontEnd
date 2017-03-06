@@ -9,10 +9,12 @@ angular.module('groupdApp')
       password: "",
       firstName: "",
       surname: "",
+      job: "",
       bio: ""
     }
 
     var createUser = function(){
+      user.username.toLowerCase();
       UserFactory.user.create(user).then(function(d){
         $scope.message = d.data.message;
         if(d.data.message == "Saved"){
