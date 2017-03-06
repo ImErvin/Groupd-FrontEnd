@@ -6,7 +6,7 @@ angular.module('groupdApp')
     $scope.show = false;
 
     $scope.logout = function(){
-        $cookies.put('userCookie', null);
+        $cookies.remove('userCookie');
         $window.location.reload();
     }
 

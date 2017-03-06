@@ -1,6 +1,21 @@
-<div class="jumbotron headerJumbotron">
+<div class="jumbotron bodyJumbotron">
+    <h1 style="text-align: center;">Projects</h1>
   <div class="container">
-    <h1>Welcome <span class="welcome">{{username}}</span></h1>
+    <hr>
+    <div>
+        <div class="row">
+            <div class="col"  ng-repeat="project in projects">
+                <div class="card">
+                    <img class="card-img-top" src="http://www.aaroncastiglione.com/wp-content/uploads/2015/07/Blog-Artwork-UX-Feature.png" alt="Card image cap">
+                    <div class="card-block">
+                        <h4 class="card-title">{{project.projectName}}</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
   </div>
-  <div class="headerJumbotronHR"></div>
 </div>

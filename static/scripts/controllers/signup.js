@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('groupdApp')
-  .controller('SignupCtrl',['UserFactory', '$scope', '$location',
-  function (UserFactory, $scope, $location) {
+  .controller('SignupCtrl',['UserFactory', '$scope', '$location', '$timeout',
+  function (UserFactory, $scope, $location, $timeout) {
     var user = {
       email: "",
       username: "",
@@ -15,6 +15,10 @@ angular.module('groupdApp')
     var createUser = function(){
       UserFactory.user.create(user).then(function(d){
         $scope.message = d.data.message;
+        if(d.data.message == "Saved"){
+          console.log("waiting");
+          $timeout(function(){$location.path('/login')}, 2000);
+        }
       });
     }
 

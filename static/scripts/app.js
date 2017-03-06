@@ -31,8 +31,17 @@ angular.module('groupdApp',['ngAnimate','ngCookies','ngMessages','ngResource','n
       $locationProvider.hashPrefix('');
 })
 
-.run(['$rootScope', '$location', 'AuthFactory', function($rootScope, $location, AuthFactory){
+.run(['$rootScope', '$location', 'AuthFactory','$cookies', 
+function($rootScope, $location, AuthFactory, $cookies){
   $rootScope.$on('$routeChangeStart', function(event, nextRoute, currRoute){
+    if(nextRoute.$$route.originalPath == "/welcome" && $cookies.get('userCookie')){
+          $location.path('/home');
+        }
+    
+    if(nextRoute.$$route.originalPath == "/login" && $cookies.get('userCookie')){
+          $location.path('/home');
+        }
+
     if(nextRoute.$$route.authenticated){
       var authenticated = AuthFactory.auth.getAuth();
       //console.log(authenticated);

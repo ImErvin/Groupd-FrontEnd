@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('groupdApp')
-  .controller('LoginCtrl',['UserFactory', '$scope', '$location',
-  function (UserFactory, $scope, $location) {
+  .controller('LoginCtrl',['UserFactory', '$scope', '$location', '$window',
+  function (UserFactory, $scope, $location, $window) {
     var user = {
       username: "",
       password: ""
@@ -13,7 +13,7 @@ angular.module('groupdApp')
       UserFactory.user.login(user.username, user.password).then(function(message){
         $scope.message = message;
         if(message == "Logged In"){
-          $location.path("/home");
+          $window.location.reload();
         }
       });
     }
