@@ -4,7 +4,7 @@ function(APIFactory){
     var project = {};
 
     project.all = function(){
-        return APIFactory.project.allProject().then(function(d){
+        return APIFactory.project.getProjects().then(function(d){
             return d.data;
         })
     }

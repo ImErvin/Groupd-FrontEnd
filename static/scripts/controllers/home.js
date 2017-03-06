@@ -12,8 +12,9 @@ angular.module('groupdApp')
         console.log($scope.projects);
       }
     })
-   // }
 
+   // }
+   console.log($cookies.get('userCookie'));
     $scope.user = JSON.parse($cookies.get('userCookie'));
 
     //$scope.logProjects = logProjects;

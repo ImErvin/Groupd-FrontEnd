@@ -6,7 +6,7 @@ function($http, $q){
     var project = {};
 
     
-    user.createUser = function(user){
+    user.postUser = function(user){
         var deferred = $q.defer();
 
 
@@ -30,7 +30,7 @@ function($http, $q){
         return deferred.promise;
     }
 
-    user.loginUser = function(username){
+    user.getUser = function(username){
         var deferred = $q.defer();
 
         $http({
@@ -48,7 +48,7 @@ function($http, $q){
         return deferred.promise;
     }
 
-    project.allProject = function(){
+    project.getProjects = function(){
         var deferred = $q.defer();
 
         $http({
