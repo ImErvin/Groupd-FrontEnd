@@ -35,6 +35,7 @@ angular.module('groupdApp',['ngAnimate','ngCookies','ngMessages','ngResource','n
   $rootScope.$on('$routeChangeStart', function(event, nextRoute, currRoute){
     if(nextRoute.$$route.authenticated){
       var authenticated = AuthFactory.auth.getAuth();
+      //console.log(authenticated);
       if(!authenticated){
         $location.path("/login");
       }

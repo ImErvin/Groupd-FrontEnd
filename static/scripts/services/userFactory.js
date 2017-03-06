@@ -7,7 +7,7 @@ function(APIFactory, AuthFactory){
     user.login = function(username, password){
         return APIFactory.user.loginUser(username).then(function(d){
             if(d.data.username == username && d.data.password == password){
-                AuthFactory.auth.setAuth(true);
+                AuthFactory.auth.setAuth(true, d.data);
                 return "Logged In";
             }else{
                 return "Username or Password is incorrect. Try again.";
