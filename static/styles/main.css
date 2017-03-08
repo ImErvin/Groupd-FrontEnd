@@ -1,49 +1,52 @@
 .headerJumbotron{
   padding-top: 50px;
   height: 100%;
-  background-color: #0099cc;
+  background-color: transparent;
   margin-bottom: 0px !important;
   color: #f1f1f1;
 }
 
 .bodyJumbotron{
   padding-top: 50px;
-  height: 100%;
-  background-color: #0099cc;
-  margin-bottom: 0px !important;
+  background-color: white;
+  margin-bottom: 5px !important;
   align-content: center;
-  color: #f1f1f1;
+  color: #1f1f1f;
 }
 
-
 .indexBody{
-  background-color: #0099cc !important;
+  background-color: #f1f1f1 !important;
+  background-image: url("../images/orange.png") !important;
 }
 
 .navColor{
   background-color: #1f1f1f !important;
-  border-bottom: 5px solid #ccf2ff;
+  border-bottom: 5px solid #f1f1f1;
+  margin-bottom: 10px;
 }
 
 .body-button{
     background-color: #1f1f1f;
-    color: white  
+    color: white;
 }
 .body-button:hover{
-    background-color: #DF0F25;
-    color: white  
+    background-color: white;
+    color: #1f1f1f;  
 }
 
 .header-button{
-    background-color: #ccf2ff;
-    color: #1f1f1f;
+    background-color: #e62e43;
+    color: #f1f1f1;
 }
 .header-button:hover{
-    background-color: #DF0F25;
-    color: white;
+    background-color: #f1f1f1;
+    color: #1f1f1f;
 }
 .welcome{
   font-family: Ubuntu;
+}
+.card{
+  background-color: #f2f38d !important;
 }
 /* Used Bootstraps Alert CSS and modified it */
 .message{
@@ -52,7 +55,7 @@
   padding: 0.25rem 1.25rem;
   border: 1px solid transparent;
   border-radius: 0.25rem;
-  background-color: #ccf2ff;
+  background-color: #e62e43;
 }
 .required{
   color: #DF0F25;
@@ -61,14 +64,19 @@
   display: none !important;
 }
 .custom-card{
-  background: -webkit-linear-gradient(-45deg, rgba(221,241,249,1) 0%,rgba(160,216,239,1) 100%); /* Chrome10-25,Safari5.1-6 */
   color: #1f1f1f;
   margin-bottom: 3px;
   border: 2px solid #006080;
 }
 .custom-card-header{
-  background-color: #1f1f1f !important;
-  color: #f1f1f1 !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("images/header.png");
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 /***
@@ -180,4 +188,11 @@ Licensed under MIT
   padding: 20px;
   background: #fff;
   min-height: 460px;
+}
+
+/* Creates a vertical nav starting at 768px (sm) */
+@media (min-width: 768px) {
+    .bootstrap-vertical-nav .collapse {
+        display: block;
+    }
 }

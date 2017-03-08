@@ -1,15 +1,47 @@
-
-        <!--<div ng-repeat="project in projects">
-            <div class="card">
-                <div class="card-header">
-                    Featured
-                </div>
-                <div class="card-block">
-                    <h4 class="card-title">{{project.projectName}}</h4>
-                    <p class="card-text">{{project.projectDesc}}</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>-->
+<div class="homeBody">
+    <div class="container">
+        <div>
+        <input class="form-control" type="text" placeholder="Search">
+        <br/>
+        <div ng-repeat="project in projects">
+            <div class="card text-center">
+            <div class="card-header">
+                <ul class="nav nav-tabs nav-inverse card-header-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Active</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+                </ul>
+            </div>
+            <div class="card-block">
+                <h4 class="card-title">Special title treatment</h4>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn body-button">Go somewhere</a>
+            </div>
+            </div>
+            <br/>
+        </div>
+        <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+        </nav>
+        </div>
+    </div>
+</div>
 
             <!--<div class="row">
                 <div class="col"  ng-repeat="project in projects track by $index">
@@ -26,8 +58,7 @@
         </div>-->
 
         <!-- Adapted page layout from :https://github.com/BlackrockDigital/startbootstrap-shop-homepage/blob/master/index.html -->
-    <div class="jumbotron bodyJumbotron">
-        <div class="container">
+            
             
         <!--<div class="row">
             <div class="col" style="border: 5px solid; background-color: #f1f1f1; color:#1f1f1f; ">
