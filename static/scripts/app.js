@@ -14,6 +14,12 @@ angular.module('groupdApp',['ngAnimate','ngCookies','ngMessages','ngResource','n
         controllerAs: 'home',
         authenticated: true
       })
+      .when('/projects/create', {
+        templateUrl: 'static/views/createproject.html',
+        controller: 'CreateProjectCtrl',
+        controllerAs: 'createproject',
+        authenticated: true
+      })
       .when('/pages/:username', {
         templateUrl: 'static/views/userpage.html',
         controller: 'UserPageCtrl',

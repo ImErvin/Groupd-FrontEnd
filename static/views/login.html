@@ -6,13 +6,13 @@
     <h4 class="message">{{message}}</h4>
     <form name="login">
       <div class="form-group row">
-      <label for="example-text-input" class="col-2 col-form-label">Username*</label>
+      <label for="example-text-input" class="col-2 col-form-label">Username<span class="required">*</span></label>
       <div class="col-10">
           <input class="form-control" ng-model="user.username" type="text" placeholder="Enter your username" id="example-text-input" required>
       </div>
       </div>
       <div class="form-group row">
-      <label for="example-search-input" class="col-2 col-form-label">Password*</label>
+      <label for="example-search-input" class="col-2 col-form-label">Password<span class="required">*</span></label>
       <div class="col-10">
           <input class="form-control" ng-model="user.password" type="password" placeholder="Enter your password" id="example-password-input" required>
       </div>

@@ -8,14 +8,15 @@
 <div class="container" ng-show="userFound">
     <div class="row profile">
 		<div class="col-md-9">
-            <div class="profile-content">
+            <div class="profile-content customContainer">
+				<div class="profile-header"></div>
                 <div>
                     <p>BIO: {{user.bio}}</p>
                 </div>
             </div>
 		</div>
         <div class="col-md-3">
-			<div class="profile-sidebar">
+			<div class="profile-sidebar customContainer">
 				<!-- SIDEBAR USERPIC -->
 				<div class="profile-userpic">
 					<img src="static/images/fractal.png" class="img-responsive" alt="">
@@ -44,7 +45,7 @@
                             <a class="nav-link active" href="#/home">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Create Project</a>
+                            <a class="nav-link" href="#/projects/create">Create Project</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">User Settings</a>

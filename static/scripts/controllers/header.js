@@ -8,8 +8,8 @@ angular.module('groupdApp')
     $scope.logout = function(){
         $cookies.remove('userCookie');
         $window.location.reload();
+        $location.path("/login");
     }
-
 
     if($cookies.get('userCookie') == "null" || !$cookies.get('userCookie')){
         $scope.show = true;

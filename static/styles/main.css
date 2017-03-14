@@ -3,7 +3,7 @@
   height: 100%;
   background-color: transparent;
   margin-bottom: 0px !important;
-  color: #f1f1f1;
+  color: #1f1f1f;
 }
 
 .bodyJumbotron{
@@ -14,14 +14,22 @@
   color: #1f1f1f;
 }
 
+.customContainer{
+  border-radius: 25px;
+  border: 3px solid #cccccc;
+  padding: 20px; 
+  width: 100%;
+  height: 100%; 
+}
+
 .indexBody{
   background-color: #f1f1f1 !important;
-  background-image: url("../images/orange.png") !important;
+  /*background-image: url("../images/orange.png") !important;*/
 }
 
 .navColor{
   background-color: #1f1f1f !important;
-  border-bottom: 5px solid #f1f1f1;
+  border-bottom: 5px solid #e62e43;
   margin-bottom: 10px;
 }
 
@@ -30,8 +38,8 @@
     color: white;
 }
 .body-button:hover{
-    background-color: white;
-    color: #1f1f1f;  
+    background-color: #DF0F25;
+    color: white;  
 }
 
 .header-button{
@@ -46,7 +54,12 @@
   font-family: Ubuntu;
 }
 .card{
-  background-color: #f2f38d !important;
+  background-color: #f1f1f1 !important;
+  border: 2px solid #1f1f1f;
+}
+.customCardHeader{
+  background-image: url('../images/orange.png');
+  color: #f1f1f1;
 }
 /* Used Bootstraps Alert CSS and modified it */
 .message{

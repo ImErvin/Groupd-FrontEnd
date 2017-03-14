@@ -1,27 +1,18 @@
 <div class="homeBody">
     <div class="container">
-        <div>
+        <div class="bodyJumbotron customContainer"
         <input class="form-control" type="text" placeholder="Search">
         <br/>
         <div ng-repeat="project in projects">
             <div class="card text-center">
-            <div class="card-header">
+            <div class="card-header customCardHeader">
                 <ul class="nav nav-tabs nav-inverse card-header-tabs">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Active</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
                 </ul>
             </div>
             <div class="card-block">
-                <h4 class="card-title">Special title treatment</h4>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn body-button">Go somewhere</a>
+                <h4 class="card-title">{{project.projectName}}</h4>
+                <p class="card-text">{{project.projectDesc}}</p>
+                <a href="#" class="btn body-button btn-block">More Information</a>
             </div>
             </div>
             <br/>
@@ -40,6 +31,7 @@
         </ul>
         </nav>
         </div>
+    </div>
     </div>
 </div>
 

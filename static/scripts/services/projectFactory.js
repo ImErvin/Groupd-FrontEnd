@@ -9,6 +9,11 @@ function(APIFactory){
         })
     }
 
+    project.create = function(project){
+        return APIFactory.project.postProject(project).then(function(d){
+            return d.data;
+        })
+    }
     return {
         project: project
     }
