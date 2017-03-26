@@ -50,13 +50,11 @@ angular.module('groupdApp',['ngAnimate','ngCookies','ngMessages','ngResource','n
 .run(['$rootScope', '$location', 'AuthFactory', 
 function($rootScope, $location, AuthFactory){
   $rootScope.$on('$routeChangeStart', function(event, nextRoute, currRoute){
-    if(nextRoute.$$route.originalPath == "/welcome" && AuthFactory.auth.getAuth()){
+    if(nextRoute.$$route.originalPath == "/welcome" && AuthFactory.auth.getAuth() ||
+       nextRoute.$$route.originalPath == "/login" && AuthFactory.auth.getAuth() ||
+       nextRoute.$$route.originalPath == "/signup" && AuthFactory.auth.getAuth()){
           $location.path('/home');
       }
-    
-    if(nextRoute.$$route.originalPath == "/login" && AuthFactory.auth.getAuth()){
-          $location.path('/home');
-        }
 
     if(nextRoute.$$route.authenticated){
       if(!AuthFactory.auth.getAuth()){

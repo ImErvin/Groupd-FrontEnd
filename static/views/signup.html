@@ -37,9 +37,21 @@
         </div>
         </div>
         <div class="form-group row">
+        <label for="example-url-input" class="col-2 col-form-label">Location<span class="required">*</span></label>
+        <div class="col-10">
+            <input class="form-control" ng-model="user.address" type="text" placeholder="Enter your location" id="example-url-input" required>
+        </div>
+        </div>
+        <div class="form-group row">
         <label for="example-url-input" class="col-2 col-form-label">Occupation<span class="required">*</span></label>
         <div class="col-10">
-            <input class="form-control" ng-model="user.job" type="text" placeholder="Enter your occupation (Student, Front-End Developer etc.)" id="example-url-input" required>
+            <input class="form-control" ng-model="user.occupation" type="text" placeholder="Enter your occupation (Student, Front-End Developer etc.)" id="example-url-input" required>
+        </div>
+        </div>
+        <div class="form-group row">
+        <label for="example-url-input" class="col-2 col-form-label">Skills<span class="required">*</span></label>
+        <div class="col-10">
+            <input class="form-control" ng-model="user.skills" type="text" placeholder="Enter your skills" id="example-url-input" required>
         </div>
         </div>
         <div class="form-group row">
@@ -48,7 +60,7 @@
             <textarea class="form-control" ng-model="user.bio" type="text" placeholder="Write a little bit about yourself and what you can offer.." id="example-tel-input"/>
         </div>
         </div>
-        <p><button class="btn body-button btn-block btn-lg" ng-click="createUser()" ng-disabled="signup.$invalid">Register</button></p>
+        <p><button class="btn body-button btn-block btn-lg" ng-click="createUser(user)" ng-disabled="signup.$invalid">Register</button></p>
     </form>
   </div>
   <div class="headerJumbotronHR"></div>

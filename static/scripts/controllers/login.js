@@ -12,6 +12,7 @@ angular.module('groupdApp')
 
     $scope.userLogin = function(){
       console.log("clicked");
+      $scope.user.username = $scope.user.username.toLowerCase();
       UserFactory.user.login($scope.user).then(function(message){
         $scope.message = message;
         if(message == "Logged In"){
