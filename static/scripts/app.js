@@ -20,6 +20,11 @@ angular.module('groupdApp',['ngAnimate','ngCookies','ngMessages','ngResource','n
         controllerAs: 'createproject',
         authenticated: true
       })
+      .when('/project/:projectId', {
+        templateUrl: 'static/views/projectpage.html',
+        controller: 'ProjectPageCtrl',
+        controllerAs: 'projectpage'
+      })
       .when('/pages/:username', {
         templateUrl: 'static/views/userpage.html',
         controller: 'UserPageCtrl',
@@ -45,20 +50,22 @@ angular.module('groupdApp',['ngAnimate','ngCookies','ngMessages','ngResource','n
 .run(['$rootScope', '$location', 'AuthFactory','$cookies', 
 function($rootScope, $location, AuthFactory, $cookies){
   $rootScope.$on('$routeChangeStart', function(event, nextRoute, currRoute){
-    if(nextRoute.$$route.originalPath == "/welcome" && $cookies.get('userCookie')){
+    if(nextRoute.$$route.originalPath == "/welcome" && AuthFactory.auth.getAuth()){
           $location.path('/home');
-        }
+      }
     
-    if(nextRoute.$$route.originalPath == "/login" && $cookies.get('userCookie')){
+    if(nextRoute.$$route.originalPath == "/login" && AuthFactory.auth.getAuth()){
           $location.path('/home');
         }
 
     if(nextRoute.$$route.authenticated){
-      var authenticated = AuthFactory.auth.getAuth();
-      //console.log(authenticated);
+      if(!AuthFactory.auth.getAuth()){
+         $location.path("/login");
+      };
+      /*console.log(authenticated);
       if(!authenticated){
-        $location.path("/login");
-      }
+       
+      }*/
     }
   })
 }]);

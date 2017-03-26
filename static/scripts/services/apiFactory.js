@@ -48,6 +48,24 @@ function($http, $q){
         return deferred.promise;
     }
 
+    project.getProject = function(projectId){
+        var deferred = $q.defer();
+
+        $http({
+            method: 'GET',
+            url: 'http://127.0.0.1:8080/api/projects/'+projectId,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        }).then(function success(response) {
+            deferred.resolve(response);
+        }).catch(function(error){
+            deferred.reject(error);
+        });
+
+        return deferred.promise;
+    }
+
     project.getProjects = function(){
         var deferred = $q.defer();
 

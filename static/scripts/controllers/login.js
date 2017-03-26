@@ -3,12 +3,14 @@
 angular.module('groupdApp')
   .controller('LoginCtrl',['UserFactory', '$scope', '$location', '$window',
   function (UserFactory, $scope, $location, $window) {
-    var user = {
+    $scope.user = {
       username: "",
       password: ""
     }
+    
+    $scope.message = "Enter required (*) fields.";
 
-    var userLogin = function(){
+    $scope.userLogin = function(){
       console.log("clicked");
       UserFactory.user.login(user.username, user.password).then(function(message){
         $scope.message = message;
@@ -18,7 +20,4 @@ angular.module('groupdApp')
       });
     }
 
-    $scope.userLogin = userLogin;
-    $scope.user = user;
-    $scope.message = "Enter required (*) fields.";
   }]);

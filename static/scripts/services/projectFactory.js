@@ -3,13 +3,19 @@ angular.module('groupdApp')
 function(APIFactory){
     var project = {};
 
-    project.all = function(){
+    project.getProjects = function(){
         return APIFactory.project.getProjects().then(function(d){
             return d.data;
         })
     }
 
-    project.create = function(project){
+    project.getProject = function(){
+        return APIFactory.project.getProject().then(function(d){
+            return d.data;
+        })
+    }
+
+    project.postProject = function(project){
         return APIFactory.project.postProject(project).then(function(d){
             return d.data;
         })

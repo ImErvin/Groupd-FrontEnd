@@ -5,7 +5,7 @@ angular.module('groupdApp')
   function (ProjectFactory, $scope, $cookies) {
     
     //var logProjects = function(){
-    ProjectFactory.project.all().then(function(d){
+    ProjectFactory.project.getProjects().then(function(d){
       $scope.projects = [];
       for(var n in d){
         $scope.projects.push(d[n]);
@@ -15,7 +15,7 @@ angular.module('groupdApp')
 
    // }
    
-   console.log($cookies.get('userCookie'));
+    console.log($cookies.get('userCookie'));
     $scope.user = JSON.parse($cookies.get('userCookie'));
 
     //$scope.logProjects = logProjects;

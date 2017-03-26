@@ -3,28 +3,39 @@
 angular.module('groupdApp')
   .controller('SignupCtrl',['UserFactory', '$scope', '$location', '$timeout',
   function (UserFactory, $scope, $location, $timeout) {
-    var user = {
-      email: "",
-      username: "",
-      password: "",
-      firstName: "",
-      surname: "",
-      job: "",
-      bio: ""
+    $scope.user = {
+      email: null,
+      username: null,
+      password: null,
+      firstName: null,
+      surname: null,
+      address: null,     
+      skills: null,
+      bio: null,
+      occupation: null,
+      ratings:{
+        rating:{
+          sumOfRates: 0,
+          rateCount: 0
+        },
+        ratedBy:null
+      },
+      bookmarks: [],
+      projects: []        
     }
 
-    var createUser = function(){
+    $scope.message = "Enter required (*) fields.";
+
+    $scope.createUser = function(){
       user.username.toLowerCase();
-      UserFactory.user.create(user).then(function(d){
+      UserFactory.user.create($scope.user).then(function(d){
         $scope.message = d.data.message;
         if(d.data.message == "Saved"){
           console.log("waiting");
+          $cookies.put()
           $timeout(function(){$location.path('/login')}, 2000);
         }
       });
     }
 
-    $scope.createUser = createUser;
-    $scope.user = user;
-    $scope.message = "Enter required (*) fields.";
   }]);
