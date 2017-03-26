@@ -14,9 +14,9 @@ function(APIFactory, AuthFactory){
     }
     
     // User.login function to contact the APIFactory for user details.
-    user.login = function(username, password){
-        return APIFactory.user.getUser(username).then(function(d){
-            if(d.data.username == username && d.data.password == password){
+    user.login = function(user){
+        return APIFactory.user.getUser(user.username).then(function(d){
+            if(d.data.username == user.username && d.data.password == user.password){
                 AuthFactory.auth.setAuth(generateToken(), d.data.username);
                 return "Logged In";
             }else{

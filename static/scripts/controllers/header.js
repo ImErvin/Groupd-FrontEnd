@@ -1,20 +1,20 @@
 'use strict';
 
 angular.module('groupdApp')
-  .controller('HeaderCtrl',['$scope','$cookies','$window', 
-  function ($scope, $cookies, $window) {
+  .controller('HeaderCtrl',['AuthFactory','$scope','$window', '$location',
+  function (AuthFactory, $scope, $window, $location) {
     $scope.show = false;
 
     $scope.logout = function(){
-        $cookies.remove('userCookie');
+        AuthFactory.auth.deleteAuth();
         $window.location.reload();
         $location.path("/login");
     }
 
-    if($cookies.get('userCookie') == "null" || !$cookies.get('userCookie')){
+    if(!AuthFactory.auth.getAuth()){
         $scope.show = true;
     }else{
-        $scope.username = JSON.parse($cookies.get('userCookie')).username;
+        $scope.username = JSON.parse(AuthFactory.auth.getAuth()).username;
         $scope.show = false;
     }
     

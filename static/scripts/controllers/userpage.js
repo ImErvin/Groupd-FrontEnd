@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('groupdApp')
-  .controller('UserPageCtrl',['UserPageFactory','$scope','$routeParams', '$cookies',
-  function (UserPageFactory, $scope, $routeParams, $cookies) {
+  .controller('UserPageCtrl',['UserPageFactory','AuthFactory','$scope','$routeParams',
+  function (UserPageFactory,AuthFactory, $scope, $routeParams) {
     $scope.currentUser = false;
     $scope.userFound = false;
 
@@ -12,10 +12,9 @@ angular.module('groupdApp')
         }else{
             $scope.user = d;
             $scope.userFound = true;
-            if($cookies.get('userCookie')){
-                if($scope.user.username === JSON.parse($cookies.get('userCookie')).username){
+            if(AuthFactory.auth.getAuth()){
+                if($scope.user.username === JSON.parse(AuthFactory.auth.getAuth()).username){
                     $scope.currentUser = true;
-                    console.log("settrue");
                 }
             }
         }
