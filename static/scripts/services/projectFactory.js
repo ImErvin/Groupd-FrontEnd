@@ -5,6 +5,7 @@ function(APIFactory){
 
     project.getProjects = function(){
         return APIFactory.project.getProjects().then(function(d){
+                        console.log(d.data[0]);
             return d.data;
         })
     }

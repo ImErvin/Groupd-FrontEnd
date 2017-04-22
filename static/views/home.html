@@ -1,4 +1,4 @@
-<div>
+<!--<div>
     <div class="container">
         <div class="bodyJumbotron customContainer"
         <input class="form-control" type="text" placeholder="Search">
@@ -33,6 +33,36 @@
         </div>
     </div>
     </div>
+</div>-->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6" ng-repeat="project in projects">
+        <div class="card card-inverse">
+        <img class="card-img" src="static/images/whitebg2.png" alt="Card image">
+        <div class="card-img-overlay">
+            <h4 class="card-title custom-card">{{project.projectName}}</h4>
+            <p class="card-text custom-card">{{project.projectDesc}}</p>
+            <button class="btn btn-block">CLICK ME</button>
+        </div>
+        <div class="card-footer">
+        <p class="card-text custom-card"><small class="text-muted">Created: {{project.time | date:'medium'}}</small></p>
+        </div>
+        </div>
+        <br/>
+        </div>
+    </div>
 </div>
+<!--
+<div class="container">
+    <div class="card" ng-repeat="project in projects">
+    <div class="card-block">
+        <h4 class="card-title">{{project.projectName}}</h4>
+        <h6 class="card-subtitle mb-2 text-muted">{{project.projectDesc}}</h6>
+        <p class="card-text">...</p>
+        <a class="btn body-button" href="#" class="card-link">Project Page</a>
+    </div>
+    </div>
+</div>-->
 
 
