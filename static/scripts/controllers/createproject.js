@@ -7,7 +7,7 @@ angular.module('groupdApp')
     $scope.project = {
         projectName: null,
         projectThumb: null,
-        projectCreator: AuthFactory.auth.getAuth().username,
+        projectCreator: JSON.parse(AuthFactory.auth.getAuth()).username,
         projectMembers: [],
         projectDelete: false,
         maxMembers: null,
@@ -15,8 +15,10 @@ angular.module('groupdApp')
         comments: "",
         time: new Date()
     }
-
+    $scope.message = "Enter required (*) fields.";
+    console.log($scope.project.projectCreator);
     $scope.createProject = function(){
-      ProjectFactory.project.postProject($scope.project);
+        console.log($scope.project);
+        ProjectFactory.project.postProject($scope.project);
     }
   }]);

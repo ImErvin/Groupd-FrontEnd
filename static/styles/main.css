@@ -22,12 +22,11 @@
 
 .indexBody{
   background-color: #1f1f1f !important;
-  /*background: url('../images/orange.png') no-repeat center center !important;
+  background: url('../images/orange.png') no-repeat left center fixed !important;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
-    -o-background-size: cover;*/
-  background: url('../images/orange.png') !important;
+    -o-background-size: cover;
 }
 
 .navColor{

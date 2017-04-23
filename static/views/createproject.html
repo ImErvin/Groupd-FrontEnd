@@ -1,20 +1,26 @@
 
-    <div class="jumbotron bodyJumbotron">
-        <div class="container">
-            <h1 class="display-5">Create Project</h1>
-            <hr/>
+<div class="container">
+<div class="jumbotron bodyJumbotron">
+    <div class="container">
+        <h1 class="display-5">Create Project</h1>
+        <hr/>
+        <h4 class="message">{{message}}</h4>
+        <form name="projectCreate">
             <div class="form-group row">
             <label for="example-text-input" class="col-2 col-form-label">Project Name<span class="required">*</span></label>
             <div class="col-10">
-                <input class="form-control" type="text" ng-model="project.projectName" placeholder="Enter your project name" id="example-text-input">
+                <input class="form-control" type="text" ng-model="project.projectName" placeholder="Enter your project name" id="example-text-input" required>
             </div>
             </div>
             <div class="form-group row">
             <label for="example-text-input" class="col-2 col-form-label">Project Description<span class="required">*</span></label>
             <div class="col-10">
-                <input class="form-control" type="text"  ng-model="project.projectDesc" placeholder="Enter your project description" id="example-text-input">
+                <input class="form-control" type="text"  ng-model="project.projectDesc" placeholder="Enter your project description" id="example-text-input" required>
             </div>
             </div>
-            <button class="btn body-button btn-block" ng-click="createProject()">Create Project</button>
-        </div>
+        
+            <p><button class="btn body-button btn-block" ng-click="createProject()" ng-disabled="projectCreate.$invalid">Create Project</button></p>
+        </form>
     </div>
+</div>
+</div>

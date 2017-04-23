@@ -28,9 +28,10 @@ function(APIFactory, AuthFactory){
     // user.create function to contact the APIFactory to create a user.
     user.create = function(user){
         return APIFactory.user.postUser(user).then(function(d){
-            if(d.status == 200){
-                console.log("200");
+            if(d.data.message == "Saved"){
                 AuthFactory.auth.setAuth(generateToken(), user.username);
+                return d;
+            }else{
                 return d;
             }
 

@@ -38,12 +38,12 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-6" ng-repeat="project in projects">
+        <a href="/#/project/{{project.projectId}}">
         <div class="card card-inverse">
-        <img class="card-img" src="static/images/whitebg2.png" alt="Card image">
+        <img class="card-img" src="static/images/whitecard.png" alt="Card image">
         <div class="card-img-overlay">
             <h4 class="card-title custom-card">{{project.projectName}}</h4>
             <p class="card-text custom-card">{{project.projectDesc}}</p>
-            <button class="btn btn-block">CLICK ME</button>
         </div>
         <div class="card-footer">
         <p class="card-text custom-card"><small class="text-muted">Created: {{project.time | date:'medium'}}</small></p>
@@ -51,6 +51,7 @@
         </div>
         <br/>
         </div>
+        </a>
     </div>
 </div>
 <!--

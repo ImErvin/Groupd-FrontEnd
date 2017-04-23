@@ -10,8 +10,8 @@ function(APIFactory){
         })
     }
 
-    project.getProject = function(){
-        return APIFactory.project.getProject().then(function(d){
+    project.getProject = function(projectId){
+        return APIFactory.project.getProject(projectId).then(function(d){
             return d.data;
         })
     }

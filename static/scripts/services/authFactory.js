@@ -16,7 +16,7 @@ function($cookies){
 
     auth.getAuth = function(){
         console.log($cookies.get('userCookie'));
-
+        
         return $cookies.get('userCookie');
     }
 

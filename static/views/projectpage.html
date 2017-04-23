@@ -1,1 +1,20 @@
-This is the project page for {{ project.name }}
+<div class="jumbotron headerJumbotron" ng-show="projectFound">
+  <div class="container">
+    <h1 class="display-5">{{errorMessage}}</h1>
+    <p><a class="btn header-button btn-lg" href="#/home">Return Home &raquo;</a></p>
+  </div>
+</div>
+
+<div class="container">
+    <div class="jumbotron bodyJumbotron" ng-hide="projectFound">
+        <h1 style="text-align: center">{{project.projectName}}</h1>
+        <hr/>
+        <h2> Project Description </h2>
+        {{project.projectDesc}}
+
+        <h2> Project Creator </h2>
+        {{user.username}}<br/>
+        {{user.firstName}} {{user.surname}}
+    </div>
+</div>
+
