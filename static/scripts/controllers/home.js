@@ -8,7 +8,9 @@ angular.module('groupdApp')
       $scope.projects = [];
       for(var n in d){
         $scope.projects.push(d[n]);
+        
       }
+      $scope.projects.reverse();
     })
 
     $scope.Button = function(){

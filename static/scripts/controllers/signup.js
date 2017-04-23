@@ -7,10 +7,11 @@ angular.module('groupdApp')
       email: null,
       username: null,
       password: null,
+      gender: null,
       firstName: null,
       surname: null,
       address: null,     
-      skills: null,
+      skills: [],
       bio: null,
       occupation: null,
       ratings:{
@@ -39,4 +40,37 @@ angular.module('groupdApp')
       });
     }
 
+    $scope.skill;
+    
+
+    $scope.addSkill = function(skill){
+      var found = false;
+      if(skill == null){
+        $scope.message = "Enter a skill";
+        return;
+      }
+      else{
+        console.log($scope.user.skills.length);
+        for(var i = 0; i < $scope.user.skills.length; i++){
+          
+          if(skill == $scope.user.skills[i]){
+            $scope.message = "Skill already exists";
+            found = true;
+          }
+        }
+      }
+      if(found == false){
+        $scope.user.skills.push(skill);
+        $scope.skill = null;
+        $scope.message = "Enter required (*) fields.";
+      }
+    }
+
+    $scope.removeSkill = function(skill){
+        for(var i = 0; i < $scope.user.skills.length; i++){
+          if(skill == $scope.user.skills[i]){
+            $scope.user.skills.splice(i, 1)
+          }
+        }
+      }
   }]);

@@ -20,12 +20,6 @@
         </div>
         </div>
         <div class="form-group row">
-        <label for="example-search-input" class="col-2 col-form-label">Password<span class="required">*</span></label>
-        <div class="col-10">
-            <input class="form-control" ng-model="user.password" type="password" placeholder="Enter your password" id="example-password-input" required>
-        </div>
-        </div>
-        <div class="form-group row">
         <label for="example-email-input" class="col-2 col-form-label">First Name<span class="required">*</span></label>
         <div class="col-10">
             <input class="form-control" ng-model="user.firstName" type="text" placeholder="Enter your first name" id="example-email-input" required>
@@ -35,6 +29,15 @@
         <label for="example-url-input" class="col-2 col-form-label">Surname<span class="required">*</span></label>
         <div class="col-10">
             <input class="form-control" ng-model="user.surname" type="text" placeholder="Enter your last name" id="example-url-input" required>
+        </div>
+        </div>
+        <div class="form-group row">
+            <label for="example-text-input" class="col-2 col-form-label">Gender<span class="required">*</span></label>
+            <div class="col-10">
+            <select class="form-control" id="exampleSelect1" id="example-text-input" ng-model="user.gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            </select>
         </div>
         </div>
         <div class="form-group row">
@@ -50,17 +53,36 @@
         </div>
         </div>
         <div class="form-group row">
-        <label for="example-url-input" class="col-2 col-form-label">Skills<span class="required">*</span></label>
-        <div class="col-10">
-            <input class="form-control" ng-model="user.skills" type="text" placeholder="Enter your skills" id="example-url-input" required>
-        </div>
-        </div>
-        <div class="form-group row">
         <label for="example-tel-input" class="col-2 col-form-label">Bio</label>
         <div class="col-10">
             <textarea class="form-control" ng-model="user.bio" type="text" placeholder="Write a little bit about yourself and what you can offer.." id="example-tel-input"/>
         </div>
         </div>
+        <div class="form-group row">
+            <label for="example-text-input" class="col-2 col-form-label">Skills</label>
+            <div class="col-10">
+                <div class="row">
+                <div class="col-lg-12">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="skills" placeholder="(Optional) Helps users find your project." ng-model="skill"/>
+                        <button class="input-group-addon" ng-click="addSkill(skill)" ng-disabled="skills.$invalid">
+                            +
+                        </button>
+                    </div>
+                </div>
+                <div class="col-10">
+                    <br/>
+                <span ng-repeat="skill in user.skills">
+                <span class="badge badge-default">
+                    <button type="button" class="close btn-xs" ng-click="removeSkill(skill)">
+                        <span>{{ skill }}</span>
+                    </button>
+                </span>
+                </span>
+                </div>
+            </div>
+            </div>
+            </div>
         <p><button class="btn body-button btn-block btn-lg" ng-click="createUser(user)" ng-disabled="signup.$invalid">Register</button></p>
     </form>
   </div>
