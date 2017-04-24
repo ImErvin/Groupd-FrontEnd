@@ -35,6 +35,17 @@
   margin-bottom: 10px;
 }
 
+.main-container {
+  float: left;
+  position: relative;
+  left: 50%;
+}
+.fixer-container {
+  float: left;
+  position: relative;
+  left: -50%;
+}
+
 .profile-info{
   text-align: left !important;
 }
@@ -59,7 +70,7 @@
 .welcome{
   font-family: Ubuntu;
 }
-.card{
+.cardBorder{
   background-color: #f1f1f1 !important;
   border: 3px solid #e8465a;
 }

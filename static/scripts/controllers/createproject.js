@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('groupdApp')
-  .controller('CreateProjectCtrl',['ProjectFactory','AuthFactory', '$scope',
-  function (ProjectFactory, AuthFactory, $scope) {
+  .controller('CreateProjectCtrl',['ProjectFactory','AuthFactory', '$scope', '$location',
+  function (ProjectFactory, AuthFactory, $scope, $location) {
 
     $scope.project = {
         projectName: null,
         projectThumb: null,
         projectCreator: JSON.parse(AuthFactory.auth.getAuth()).username,
-        projectMembers: [],
+        projectMembers: [JSON.parse(AuthFactory.auth.getAuth()).username],
         projectDelete: false,
         maxMembers: null,
         projectDesc: null,
@@ -20,7 +20,12 @@ angular.module('groupdApp')
     console.log($scope.project.projectCreator);
     $scope.createProject = function(){
         console.log($scope.project);
-        ProjectFactory.project.postProject($scope.project);
+        ProjectFactory.project.postProject($scope.project).then(function(d){
+          if(d.message="Project Added"){
+            window.location = "/#/project/"+d.id;
+          }
+          console.log(d);
+      });
     }
     
     $scope.tag;

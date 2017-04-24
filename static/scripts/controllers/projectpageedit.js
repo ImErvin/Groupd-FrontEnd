@@ -26,6 +26,7 @@ angular.module('groupdApp')
         $scope.editProject = function(){
             ProjectFactory.project.putProject($scope.project).then(function(d){
                 console.log(d);
+                window.location = "/#/project/"+$scope.project.projectId;
             })
         }
 

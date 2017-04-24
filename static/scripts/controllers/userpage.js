@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('groupdApp')
-  .controller('UserPageCtrl',['UserPageFactory','AuthFactory','$scope','$routeParams',
-  function (UserPageFactory,AuthFactory, $scope, $routeParams) {
+  .controller('UserPageCtrl',['UserFactory','AuthFactory','$scope','$routeParams',
+  function (UserFactory,AuthFactory, $scope, $routeParams) {
     $scope.currentUser = false;
     $scope.userFound = false;
 
-    UserPageFactory.user.getUser($routeParams.username).then(function(d){
+    UserFactory.user.getUser($routeParams.username).then(function(d){
         if(!d){
             $scope.errorMessage = "User with username: '"+$routeParams.username+"' was not found.";
         }else{

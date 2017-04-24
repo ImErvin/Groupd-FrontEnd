@@ -7,7 +7,7 @@ angular.module('groupdApp')
       email: null,
       username: null,
       password: null,
-      gender: null,
+      gender: "Male",
       firstName: null,
       surname: null,
       address: null,     

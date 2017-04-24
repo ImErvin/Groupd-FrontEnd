@@ -15,10 +15,30 @@
                     <hr/>
                 </div>
                 <div style="text-align: left !important">
+                    <p class="message" ng-show="showError">{{ showErrorMessage }}</p>
                     <div class="form-group">
                         <label for="projectDescTextarea">Project Description</label>
                         <textarea class="form-control" disabled id="projectDescTextarea" rows="3">{{ project.projectDesc }}</textarea>
                     </div>
+                    <div class="form-group">
+                        <label>Project Members</label>
+                    <div class="row">
+                        <div class="col-sm-4" ng-repeat="member in project.projectMembers">
+                        <a href="/#/users/{{member}}">
+                        <div class="card card-inverse">
+                        <img class="card-img profile-userpic" src="\static\images\{{user.gender}}.jpg" alt="Card image" style="height: 150px !important">
+                        <div class="card-img-overlay">
+                        </div>
+                        <div class="card-footer">
+                        <p class="card-text text-center custom-card"><small class="text-muted">{{ member }}</small></p>
+                        </div>
+                        </div>
+                        <br/>
+                        </div>
+                        </a>
+                    </div>
+                    
+                    </div>   
                 </div>
             </div>
 		</div>
@@ -28,7 +48,7 @@
                 <p class="profile-usertitle-name">Project Creator</p>
 				<div class="profile-userpic">
 					<a href="/#/pages/{{user.username}}">
-                    <img src="\static\images\default-profile.jpg" class="img-responsive" alt="">
+                    <img src="\static\images\{{user.gender}}.jpg" class="img-responsive" alt="">
 					</a>
 				</div>
 				<!-- END SIDEBAR USERPIC -->
@@ -51,16 +71,27 @@
 				<div class="profile-usermenu" ng-show="currentUser">
 					<ul class="nav flex-column" id="exCollapsingNavbar3">
                         <li class="nav-item">
-                            <a class="nav-link" href="/#/projects/create">Add Member</a>
+                            <a class="nav-link" href="" data-toggle="modal" data-target="#addUser">Add Member</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Remove Member</a>
+                            <a class="nav-link" href="" data-toggle="collapse" data-target="#collapseExample" ng-click="showError = false">Remove Member</a>
+                            <div class="collapse" id="collapseExample">
+                            <div class="card card-block">
+                                <span ng-repeat="member in project.projectMembers">
+                                <span class="badge badge-default">
+                                    <button type="button" class="close btn-xs" ng-click="removeMember(member)">
+                                        <span>{{ member }}</span>
+                                    </button>
+                                </span>
+                                </span>
+                            </div>
+                            </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/#/project/{{project.projectId}}/edit">Edit Project</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="" data-toggle="modal" data-target="#myModal">Delete Project</a>
+                            <a class="nav-link" href="" data-toggle="modal" data-target="#delete">Delete Project</a>
                         </li>
                     </ul>
 				</div>
@@ -71,7 +102,40 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <form class="form-inline float-right" name="searchbar">
+              <div class="input-group">
+                <input type="text" class="form-control" ng-model="searchUsername" placeholder="Search" aria-describedby="basic-addon1" required>
+                <button class="btn header-button input-group-addon" ng-click="search()" id="basic-addon1"  ng-disabled="searchbar.$invalid">Search</button> 
+              </div>
+          </form>
+      </div>
+      <div class="modal-body">
+        <p ng-hide="userfound" class="message">{{ searchmessage }}</p>  
+        <div ng-show="userfound">
+            <p class="message">{{ searchmessage }}</p>
+            <div class="main-container">
+            <div class="fixer-container">
+            <div class="card text-center" style="width: 20rem;">
+            <div class="card-block">
+                <h4 class="card-title">{{ searchuser.username }}</h4>
+                <button class="btn btn-block body-button" ng-click="addMember()" id="basic-addon1"  ng-disabled="searchbar.$invalid">Add Member</button> 
+            </div>
+            </div>
+            </div>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">

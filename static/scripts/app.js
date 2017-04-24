@@ -30,6 +30,11 @@ angular.module('groupdApp',['ngAnimate','ngCookies','ngMessages','ngResource','n
         controller: 'ProjectPageEditCtrl',
         controllerAs: 'projectpageedit'
       })
+      .when('/search/:searchkeyword', {
+        templateUrl: 'static/views/searchresult.html',
+        controller: 'SearchCtrl',
+        controllerAs: 'searchctrl'
+      })
       .when('/pages/:username', {
         templateUrl: 'static/views/userpage.html',
         controller: 'UserPageCtrl',

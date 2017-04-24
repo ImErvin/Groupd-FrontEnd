@@ -10,6 +10,10 @@ angular.module('groupdApp')
         $scope.projects.push(d[n]);
         
       }
+      console.log($scope.projects);
+      if($scope.projects.length == 0){
+        $scope.noProjects = true;
+      }
       $scope.projects.reverse();
     })
 
