@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('groupdApp')
-  .controller('ProjectPageCtrl',['ProjectFactory','$scope', '$routeParams', "$location",'UserPageFactory','AuthFactory',
-      function (ProjectFactory, $scope, $routeParams, $location, UserPageFactory, AuthFactory) {
+  .controller('ProjectPageCtrl',['ProjectFactory','$scope', '$routeParams', "$location",'UserPageFactory','AuthFactory', '$window',
+      function (ProjectFactory, $scope, $routeParams, $location, UserPageFactory, AuthFactory, $window){
 
         ProjectFactory.project.getProject($routeParams.projectId).then(function(d){
           if(d.message == "404"){
@@ -31,5 +31,17 @@ angular.module('groupdApp')
         $scope.edit = function(){
           $scope.editProject = true;
           $scope.projectDeets = false;
+        }
+        
+        var returnBack = function(){
+          console.log("welp");
+          $window.location.reload();
+        }
+
+        $scope.delete = function(){
+          ProjectFactory.project.deleteProject($scope.project).then(function(d){
+            console.log(d);
+            setTimeout(function(){returnBack()}, 3000);
+          })
         }
   }]);  

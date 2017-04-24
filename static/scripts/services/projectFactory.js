@@ -21,6 +21,18 @@ function(APIFactory){
             return d.data;
         })
     }
+
+    project.putProject = function(project){
+        return APIFactory.project.putProject(project).then(function(d){
+            return d.data;
+        })
+    }
+
+    project.deleteProject = function(project){
+        return APIFactory.project.deleteProject(project).then(function(d){
+            return d.data;
+        })
+    }
     return {
         project: project
     }

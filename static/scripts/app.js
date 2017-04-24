@@ -14,7 +14,7 @@ angular.module('groupdApp',['ngAnimate','ngCookies','ngMessages','ngResource','n
         controllerAs: 'home',
         authenticated: true
       })
-      .when('/projects/create', {
+      .when('/project/create', {
         templateUrl: 'static/views/createproject.html',
         controller: 'CreateProjectCtrl',
         controllerAs: 'createproject',
@@ -24,6 +24,11 @@ angular.module('groupdApp',['ngAnimate','ngCookies','ngMessages','ngResource','n
         templateUrl: 'static/views/projectpage.html',
         controller: 'ProjectPageCtrl',
         controllerAs: 'projectpage'
+      })
+      .when('/project/:projectId/edit', {
+        templateUrl: 'static/views/projectpageedit.html',
+        controller: 'ProjectPageEditCtrl',
+        controllerAs: 'projectpageedit'
       })
       .when('/pages/:username', {
         templateUrl: 'static/views/userpage.html',

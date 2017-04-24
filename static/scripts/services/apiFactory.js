@@ -107,6 +107,52 @@ function($http, $q){
         return deferred.promise;
     }
 
+    project.putProject = function(project){
+        var deferred = $q.defer();
+
+        if(typeof project === "object"){
+            project = JSON.stringify(project);
+        }
+        
+        $http({
+            method: 'PUT',
+            url: 'http://127.0.0.1:8080/api/projects/'+project.projectId,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: project,
+        }).then(function success(response) {
+            deferred.resolve(response);
+        }).catch(function(error){
+            deferred.reject(error);
+        });
+
+        return deferred.promise;
+    }
+
+    project.deleteProject = function(project){
+        var deferred = $q.defer();
+
+        if(typeof project === "object"){
+            project = JSON.stringify(project);
+        }
+        
+        $http({
+            method: 'DELETE',
+            url: 'http://127.0.0.1:8080/api/projects/'+project.projectId,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: project,
+        }).then(function success(response) {
+            deferred.resolve(response);
+        }).catch(function(error){
+            deferred.reject(error);
+        });
+
+        return deferred.promise;
+    }
+
     return{
         user: user,
         project: project
