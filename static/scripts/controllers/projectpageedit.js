@@ -24,10 +24,16 @@ angular.module('groupdApp')
         });
 
         $scope.editProject = function(){
+          if($scope.project.maxMembers < $scope.project.projectMembers.length){
+              $scope.message = "There are more members than you've set!";
+              $scope.project.maxMembers = $scope.project.projectMembers.length;
+          }else{
+            console.log($scope.project.maxMembers + " " + $scope.project.projectMembers.length);
             ProjectFactory.project.putProject($scope.project).then(function(d){
                 console.log(d);
                 window.location = "/#/project/"+$scope.project.projectId;
             })
+          }
         }
 
         $scope.tag;

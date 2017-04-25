@@ -24,9 +24,9 @@
                         <label>Project Members</label>
                     <div class="row">
                         <div class="col-sm-4" ng-repeat="member in project.projectMembers">
-                        <a href="/#/users/{{member}}">
+                        <a href="/#/pages/{{member}}">
                         <div class="card card-inverse">
-                        <img class="card-img profile-userpic" src="\static\images\{{user.gender}}.jpg" alt="Card image" style="height: 150px !important">
+                        <img class="card-img profile-userpic" src="\static\images\{{user.gender}}.jpg" alt="Card image" style="height: 180px !important">
                         <div class="card-img-overlay">
                         </div>
                         <div class="card-footer">
@@ -34,8 +34,8 @@
                         </div>
                         </div>
                         <br/>
-                        </div>
                         </a>
+                        </div>
                     </div>
                     
                     </div>   
@@ -78,11 +78,17 @@
                             <div class="collapse" id="collapseExample">
                             <div class="card card-block">
                                 <span ng-repeat="member in project.projectMembers">
-                                <span class="badge badge-default">
-                                    <button type="button" class="close btn-xs" ng-click="removeMember(member)">
-                                        <span>{{ member }}</span>
-                                    </button>
-                                </span>
+                                    <div ng-if="member == project.projectCreator">
+                                        <span class="btn btn-block badge badge-warning" ng-click="removeMember(member)">
+                                            <span>{{ member }}</span>
+                                        </span>
+                                    </div>
+                                    <div ng-if="member != project.projectCreator">
+                                        <span class="btn btn-block badge body-button badge-warning" ng-click="removeMember(member)">
+                                            <span>{{ member }}</span><span class="float-left">&times;</span>
+                                        </span>
+                                    </div>
+                                
                                 </span>
                             </div>
                             </div>
@@ -98,6 +104,28 @@
 				<!-- END MENU -->
 			</div>
 		</div>
+        <div class="col-md-9">
+            <div class="projectComments customContainer">
+                <div class="form-group">
+                    <textarea class="form-control" id="projectDescTextarea" ng-model="comment" placeholder="{{placeholder}}" rows="3"></textarea>
+                    <button class="btn btn-sm body-button float-left" ng-click="addComment(comment)">Send</button> <br/>
+                    <hr/>
+                </div>
+                <div style="text-align: left !important">
+                    <div class="card" ng-repeat="comment in project.comments">
+                    <div class="card-header">
+                        <a class="text-muted" href="/#/pages/{{comment.username}}">{{comment.username}}</a>
+                        <span class="float-right text-muted">{{comment.time | date:'medium'}}</span>
+                    </div>
+                    <div class="card-block">
+                        <blockquote class="card-blockquote">
+                        <p>{{ comment.comment}}</p>
+                        </blockquote>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 	</div>
 </div>
 
@@ -117,16 +145,24 @@
         <p ng-hide="userfound" class="message">{{ searchmessage }}</p>  
         <div ng-show="userfound">
             <p class="message">{{ searchmessage }}</p>
-            <div class="main-container">
-            <div class="fixer-container">
-            <div class="card text-center" style="width: 20rem;">
-            <div class="card-block">
-                <h4 class="card-title">{{ searchuser.username }}</h4>
-                <button class="btn btn-block body-button" ng-click="addMember()" id="basic-addon1"  ng-disabled="searchbar.$invalid">Add Member</button> 
-            </div>
-            </div>
-            </div>
-            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                <a href="">
+                <div class="card card-inverse">
+                <img class="card-img profile-userpic" src="\static\images\{{searchuser.gender}}.jpg" alt="Card image">
+                <div class="card-img-overlay">
+                </div>
+                <div class="card-footer">
+                <p class="card-text text-center custom-card"><small class="text-muted">{{ searchuser.username }}</small></p>
+                </div>
+                </div>
+                <br/>
+                </a>
+                </div>
+                <div class="col-sm-6">
+                    <button class="btn btn-block body-button" style="vertical-align: bottom !important" ng-click="addMember()">Add Member</button>
+                </div>
+            </div>                
         </div>
         </div>
       </div>

@@ -20,6 +20,13 @@
         </div>
         </div>
         <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Password<span class="required">*</span></label>
+        <div class="col-10">
+            <input class="form-control" ng-model="user.password" type="password" ng-minlength="8" placeholder="Enter your username" id="example-text-input" required>
+            <div class="form-text text-muted">Minimum of 8 characters</div>
+        </div>
+        </div>
+        <div class="form-group row">
         <label for="example-email-input" class="col-2 col-form-label">First Name<span class="required">*</span></label>
         <div class="col-10">
             <input class="form-control" ng-model="user.firstName" type="text" placeholder="Enter your first name" id="example-email-input" required>
@@ -73,10 +80,9 @@
                 <div class="col-10">
                     <br/>
                 <span ng-repeat="skill in user.skills">
-                <span class="badge badge-default">
-                    <button type="button" class="close btn-xs" ng-click="removeSkill(skill)">
-                        <span>{{ skill }}</span>
-                    </button>
+                    <span class="btn btn-sm badge header-button badge-warning" ng-click="removeSkill(skill)">
+                        <span>{{ skill }}</span><span class="float-left">&times;</span>
+                    </span>
                 </span>
                 </span>
                 </div>

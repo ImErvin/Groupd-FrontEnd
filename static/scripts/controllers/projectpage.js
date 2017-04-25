@@ -8,6 +8,9 @@ angular.module('groupdApp')
         $scope.searchmessage = "No results to show!";
         $scope.projectFound = false;
         $scope.errorMessage;
+        $scope.placeholder = "Write a comment..";
+
+        
 
         ProjectFactory.project.getProject($routeParams.projectId).then(function(d){
           if(d.message == "404"){
@@ -35,6 +38,7 @@ angular.module('groupdApp')
                 });
                 $scope.project = d;
                 console.log(d);
+                $scope.project.comments.reverse();
           }
         });
 
@@ -52,6 +56,18 @@ angular.module('groupdApp')
             }
           }
         }
+      }
+
+      $scope.addComment = function(comment){
+        if(comment == null){
+          $scope.placeholder = "You haven't written a comment..";
+        }else{
+          $scope.project.comments.push({username:JSON.parse(AuthFactory.auth.getAuth()).username, comment: comment, time: new Date()});
+           ProjectFactory.project.putProject($scope.project).then(function(d){
+          console.log(d);
+        });
+      }
+      
       }
 
       function updateProject(){

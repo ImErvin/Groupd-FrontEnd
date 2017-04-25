@@ -28,7 +28,8 @@ angular.module('groupdApp',['ngAnimate','ngCookies','ngMessages','ngResource','n
       .when('/project/:projectId/edit', {
         templateUrl: 'static/views/projectpageedit.html',
         controller: 'ProjectPageEditCtrl',
-        controllerAs: 'projectpageedit'
+        controllerAs: 'projectpageedit',
+        authenticated: true
       })
       .when('/search/:searchkeyword', {
         templateUrl: 'static/views/searchresult.html',

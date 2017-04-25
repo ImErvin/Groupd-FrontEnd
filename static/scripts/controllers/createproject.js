@@ -13,7 +13,7 @@ angular.module('groupdApp')
         maxMembers: null,
         projectDesc: null,
         tags: [],
-        comments: "",
+        comments: [],
         time: new Date()
     }
     $scope.message = "Enter required (*) fields.";

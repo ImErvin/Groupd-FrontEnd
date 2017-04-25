@@ -45,10 +45,8 @@
                 <div class="col-10">
                     <br/>
                 <span ng-repeat="tag in project.tags">
-                <span class="badge badge-default">
-                    <button type="button" class="close btn-xs" ng-click="removeTag(tag)">
-                        <span>{{ tag }}</span>
-                    </button>
+                <span class="btn btn-sm badge header-button badge-warning" ng-click="removeTag(tag)">
+                    <span>{{ tag }}</span><span class="float-left">&times;</span>
                 </span>
                 </span>
                 </div>
