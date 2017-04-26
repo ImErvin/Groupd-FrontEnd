@@ -1,103 +1,114 @@
 <div class="jumbotron headerJumbotron" ng-show="userFound">
-  <div class="container">
-    <h1 class="display-5">{{errorMessage}}</h1>
-    <p><a class="btn header-button btn-lg" href="#/home">Return Home &raquo;</a></p>
-  </div>
+    <div class="container">
+        <h1 class="display-5">{{errorMessage}}</h1>
+        <p><a class="btn header-button btn-lg" href="#/home">Return Home &raquo;</a>
+        </p>
+    </div>
 </div>
 
 <div class="container" ng-hide="userFound">
-<div class="jumbotron bodyJumbotron">
-  <div class="container">
-    <h1 class="display-3">Edit User</h1>
-    <hr/>
-    <!-- Disabled my button until users fill in the details 
+    <div class="jumbotron bodyJumbotron">
+        <div class="container">
+            <h1 class="display-3">Edit User</h1>
+            <hr/>
+            <!-- Disabled my button until users fill in the details 
          Adapted from: http://stackoverflow.com/questions/15300067/disable-submit-button-when-form-invalid-with-angularjs -->
-    <form name="signup">
-        <div class="form-group row">
-        <label for="example-text-input" class="col-2 col-form-label">Email<span class="required">*</span></label>
-        <div class="col-10">
-            <input class="form-control" ng-model="user.email" type="text" placeholder="Enter your email" id="example-text-input" disabled>
-        </div>
-        </div>
-        <div class="form-group row">
-        <label for="example-text-input" class="col-2 col-form-label">Username<span class="required">*</span></label>
-        <div class="col-10">
-            <input class="form-control" ng-model="user.username" type="text" placeholder="Enter your username" id="example-text-input" disabled>
-        </div>
-        </div>
-        <div class="form-group row">
-        <label for="example-text-input" class="col-2 col-form-label">Password<span class="required">*</span></label>
-        <div class="col-10">
-            <input class="form-control" ng-model="user.password" type="password" ng-minlength="8" placeholder="Enter your username" id="example-text-input" required>
-            <div class="form-text text-muted">Minimum of 8 characters</div>
-        </div>
-        </div>
-        <div class="form-group row">
-        <label for="example-email-input" class="col-2 col-form-label">First Name<span class="required">*</span></label>
-        <div class="col-10">
-            <input class="form-control" ng-model="user.firstName" type="text" placeholder="Enter your first name" id="example-email-input" required>
-        </div>
-        </div>
-        <div class="form-group row">
-        <label for="example-url-input" class="col-2 col-form-label">Surname<span class="required">*</span></label>
-        <div class="col-10">
-            <input class="form-control" ng-model="user.surname" type="text" placeholder="Enter your last name" id="example-url-input" required>
-        </div>
-        </div>
-        <div class="form-group row">
-            <label for="example-text-input" class="col-2 col-form-label">Gender<span class="required">*</span></label>
-            <div class="col-10">
-            <select class="form-control" id="exampleSelect1" id="example-text-input" ng-model="user.gender">
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            </select>
-        </div>
-        </div>
-        <div class="form-group row">
-        <label for="example-url-input" class="col-2 col-form-label">Location<span class="required">*</span></label>
-        <div class="col-10">
-            <input class="form-control" ng-model="user.address" type="text" placeholder="Enter your location" id="example-url-input" required>
-        </div>
-        </div>
-        <div class="form-group row">
-        <label for="example-url-input" class="col-2 col-form-label">Occupation<span class="required">*</span></label>
-        <div class="col-10">
-            <input class="form-control" ng-model="user.occupation" type="text" placeholder="Enter your occupation (Student, Front-End Developer etc.)" id="example-url-input" required>
-        </div>
-        </div>
-        <div class="form-group row">
-        <label for="example-tel-input" class="col-2 col-form-label">Bio</label>
-        <div class="col-10">
-            <textarea class="form-control" ng-model="user.bio" type="text" placeholder="Write a little bit about yourself and what you can offer.." id="example-tel-input"/>
-        </div>
-        </div>
-        <div class="form-group row">
-            <label for="example-text-input" class="col-2 col-form-label">Skills</label>
-            <div class="col-10">
-                <div class="row">
-                <div class="col-lg-12">
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="skills" placeholder="(Optional) Helps users find your project." ng-model="skill"/>
-                        <button class="input-group-addon" ng-click="addSkill(skill)" ng-disabled="skills.$invalid">
-                            +
-                        </button>
+            <form name="signup">
+                <div class="form-group row">
+                    <label for="example-text-input" class="col-2 col-form-label">Email<span class="required">*</span>
+                    </label>
+                    <div class="col-10">
+                        <input class="form-control" ng-model="user.email" type="text" placeholder="Enter your email" id="example-text-input" disabled>
                     </div>
                 </div>
-                <div class="col-10">
-                    <br/>
-                <span ng-repeat="skill in user.skills">
+                <div class="form-group row">
+                    <label for="example-text-input" class="col-2 col-form-label">Username<span class="required">*</span>
+                    </label>
+                    <div class="col-10">
+                        <input class="form-control" ng-model="user.username" type="text" placeholder="Enter your username" id="example-text-input" disabled>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-text-input" class="col-2 col-form-label">Password<span class="required">*</span>
+                    </label>
+                    <div class="col-10">
+                        <input class="form-control" ng-model="user.password" type="password" ng-minlength="8" placeholder="Enter your username" id="example-text-input" required>
+                        <div class="form-text text-muted">Minimum of 8 characters</div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-email-input" class="col-2 col-form-label">First Name<span class="required">*</span>
+                    </label>
+                    <div class="col-10">
+                        <input class="form-control" ng-model="user.firstName" type="text" placeholder="Enter your first name" id="example-email-input" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-url-input" class="col-2 col-form-label">Surname<span class="required">*</span>
+                    </label>
+                    <div class="col-10">
+                        <input class="form-control" ng-model="user.surname" type="text" placeholder="Enter your last name" id="example-url-input" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-text-input" class="col-2 col-form-label">Gender<span class="required">*</span>
+                    </label>
+                    <div class="col-10">
+                        <select class="form-control" id="exampleSelect1" id="example-text-input" ng-model="user.gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-url-input" class="col-2 col-form-label">Location<span class="required">*</span>
+                    </label>
+                    <div class="col-10">
+                        <input class="form-control" ng-model="user.address" type="text" placeholder="Enter your location" id="example-url-input" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-url-input" class="col-2 col-form-label">Occupation<span class="required">*</span>
+                    </label>
+                    <div class="col-10">
+                        <input class="form-control" ng-model="user.occupation" type="text" placeholder="Enter your occupation (Student, Front-End Developer etc.)" id="example-url-input" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-tel-input" class="col-2 col-form-label">Bio</label>
+                    <div class="col-10">
+                        <textarea class="form-control" ng-model="user.bio" type="text" placeholder="Write a little bit about yourself and what you can offer.." id="example-tel-input" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-text-input" class="col-2 col-form-label">Skills</label>
+                    <div class="col-10">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="skills" placeholder="(Optional) Helps users find your project." ng-model="skill" />
+                                    <button class="input-group-addon" ng-click="addSkill(skill)" ng-disabled="skills.$invalid">
+                                        +
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-10">
+                                <br/>
+                                <span ng-repeat="skill in user.skills">
                     <span class="btn btn-sm badge header-button badge-warning" ng-click="removeSkill(skill)">
                         <span>{{ skill }}</span><span class="float-left">&times;</span>
-                    </span>
-                </span>
-                </span>
+                                </span>
+                                </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            </div>
-            </div>
-        <p><button class="btn body-button btn-block btn-lg" ng-click="editUser()" ng-disabled="signup.$invalid">Register</button></p>
-    </form>
-  </div>
-  <div class="headerJumbotronHR"></div>
-</div>
+                <p>
+                    <button class="btn body-button btn-block btn-lg" ng-click="editUser()" ng-disabled="signup.$invalid">Update</button>
+                </p>
+            </form>
+        </div>
+        <div class="headerJumbotronHR"></div>
+    </div>
 </div>

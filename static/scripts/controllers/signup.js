@@ -14,13 +14,7 @@ angular.module('groupdApp')
       skills: [],
       bio: null,
       occupation: null,
-      ratings:{
-        rating:{
-          sumOfRates: 0,
-          rateCount: 0
-        },
-        ratedBy:null
-      },
+      ratings:[{}],
       bookmarks: [],
       projects: []        
     }

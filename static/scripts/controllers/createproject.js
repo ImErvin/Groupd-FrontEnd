@@ -17,15 +17,12 @@ angular.module('groupdApp')
         time: new Date()
     }
     $scope.message = "Enter required (*) fields.";
-    console.log($scope.project.projectCreator);
     $scope.createProject = function(){
-        console.log($scope.project);
         ProjectFactory.project.postProject($scope.project).then(function(d){
           if(d.message="Project Added"){
             updateUser($scope.project.projectCreator, d.id);
             window.location = "/#/project/"+d.id;
           }
-          console.log(d);
       });
     }
     
@@ -34,11 +31,9 @@ angular.module('groupdApp')
     function updateUser(username, projectId){
       UserFactory.user.getUser(username).then(function(d){
         if(!d){
-          console.log("error");
         }else{
           d.projects.push(projectId);
           UserFactory.user.putUser(d).then(function(d){
-              console.log(d);
           });
       }
       })

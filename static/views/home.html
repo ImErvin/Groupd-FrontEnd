@@ -1,74 +1,74 @@
-<!--<div>
-    <div class="container">
-        <div class="bodyJumbotron customContainer"
-        <input class="form-control" type="text" placeholder="Search">
-        <br/>
-        <div ng-repeat="project in projects">
-            <div class="card text-center">
-            <div class="card-header customCardHeader">
-                <ul class="nav nav-tabs nav-inverse card-header-tabs">
-                </ul>
-            </div>
-            <div class="card-block">
-                <h4 class="card-title">{{project.projectName}}</h4>
-                <p class="card-text">{{project.projectDesc}}</p>
-                <a href="#" class="btn body-button btn-block">More Information</a>
-            </div>
-            </div>
-            <br/>
-        </div>
-        <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-            </li>
-        </ul>
-        </nav>
-        </div>
-    </div>
-    </div>
-</div>-->
-
 <div class="container text-center" ng-show="noProjects">
     <h4 class="message">There are no projects to show :(</h4>
     <a href="/#/project/create" class="btn btn-block body-button">Be the first to create a project!</a>
 </div>
 
 <div class="container">
+    <div class="input-group" style="margin-bottom: 10px !important">
+        <input type="text" class="form-control" placeholder="Search" ng-model="searchWord" aria-describedby="basic-addon1">
+        <button class="btn body-button input-group-addon" id="basic-addon1" ng-click="search()">Search</button>
+        <button ng-show="searchOn" class="btn header-button input-group-addon" id="basic-addon1" ng-click="searchOn = false">Close Search</button>
+    </div>
+</div>
+
+<div class="container" ng-show="searchOn">
+    <label>Users</label>
     <div class="row">
-        <div class="col-sm-6" ng-repeat="project in projects">
-        <a href="/#/project/{{project.projectId}}">
-        <div class="card cardBorder card-inverse">
-        <img class="card-img" src="static/images/whitecard.png" alt="Card image">
-        <div class="card-img-overlay">
-            <h5 class="card-title custom-card">{{project.projectName}} <span class="float-right btn btn-sm btn-warning" ng-click="bookmarkProject(project.projectId)"><i class="fa fa-star" aria-hidden="true"></i></span></h5> 
-            <p class="card-text custom-card">{{project.projectThumb}}</p>
+        <div class="col-sm-6" ng-repeat="user in searchResultsUsers">
+            <a href="/#/pages/{{user.username}}">
+                <div class="card cardBorder card-inverse">
+                    <img class="card-img" src="/static/images/fractal.png" alt="Card image">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title custom-card">{{user.username}}</h5>
+                        <p class="card-text custom-card">{{user.firstName}} {{user.surname}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <p class="card-text custom-card"><small class="text-muted">{{user.occupation}}</small>
+                        </p>
+                    </div>
+                </div>
+                <br/>
+            </a>
         </div>
-        <div class="card-footer">
-        <p class="card-text custom-card"><small class="text-muted">Created: {{project.time | date:'medium'}}</small></p>
-        </div>
-        </div>
-        <br/>
-        </a>
+    </div>
+    <label>Projects</label>
+    <div class="row">
+        <div class="col-sm-6" ng-repeat="project in searchResultsProjects">
+            <a href="/#/project/{{project.projectId}}">
+                <div class="card cardBorder card-inverse">
+                    <img class="card-img" src="static/images/whitecard.png" alt="Card image">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title custom-card">{{project.projectName}} <span class="float-right btn btn-sm btn-warning" ng-click="bookmarkProject(project.projectId)"><i class="fa fa-star" aria-hidden="true"></i></span></h5>
+                        <p class="card-text custom-card">{{project.projectThumb}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <p class="card-text custom-card"><small class="text-muted">Created: {{project.time | date:'medium'}}</small>
+                        </p>
+                    </div>
+                </div>
+                <br/>
+            </a>
         </div>
     </div>
 </div>
-<!--
-<div class="container">
-    <div class="card" ng-repeat="project in projects">
-    <div class="card-block">
-        <h4 class="card-title">{{project.projectName}}</h4>
-        <h6 class="card-subtitle mb-2 text-muted">{{project.projectDesc}}</h6>
-        <p class="card-text">...</p>
-        <a class="btn body-button" href="#" class="card-link">Project Page</a>
-    </div>
-    </div>
-</div>-->
 
-
+<div class="container" ng-hide="searchOn">
+    <div class="row">
+        <div class="col-sm-6" ng-repeat="project in projects">
+            <a href="/#/project/{{project.projectId}}">
+                <div class="card cardBorder card-inverse">
+                    <img class="card-img" src="static/images/whitecard.png" alt="Card image">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title custom-card">{{project.projectName}} <span class="float-right btn btn-sm btn-warning" ng-click="bookmarkProject(project.projectId)"><i class="fa fa-star" aria-hidden="true"></i></span></h5>
+                        <p class="card-text custom-card">{{project.projectThumb}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <p class="card-text custom-card"><small class="text-muted">Created: {{project.time | date:'medium'}}</small>
+                        </p>
+                    </div>
+                </div>
+                <br/>
+            </a>
+        </div>
+    </div>
+</div>

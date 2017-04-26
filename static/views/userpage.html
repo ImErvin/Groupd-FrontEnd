@@ -1,83 +1,112 @@
 <div class="jumbotron headerJumbotron" ng-hide="userFound">
-  <div class="container">
-    <h1 class="display-5">{{errorMessage}}</h1>
-    <p><a class="btn header-button btn-lg" href="#/home">Return Home &raquo;</a></p>
-  </div>
+    <div class="container">
+        <h1 class="display-5">{{errorMessage}}</h1>
+        <p><a class="btn header-button btn-lg" href="#/home">Return Home &raquo;</a>
+        </p>
+    </div>
 </div>
 
 <div class="container" ng-show="userFound">
     <div class="row profile">
-		<div class="col-md-9">
+        <div class="col-md-9">
             <div class="profile-content customContainer">
-				<div class="profile-header"></div>
+                <div class="profile-header"></div>
                 <div class="profile-info">
-					<label>Bio:</label>
+
+                    <label>Bio:</label>
                     <textarea class="form-control" rows="auto" disabled>{{user.bio}}</textarea>
-					<label>Projects</label>
-					
-					<div class="row">
-                    <div class="col-sm-6" ng-repeat="project in projects">
-                        <a href="/#/project/{{project.projectId}}">
-						<div class="card cardBorder card-inverse">
-						<img class="card-img" src="static/images/whitecard.png" alt="Card image">
-						<div class="card-img-overlay">
-							<h5 class="card-title custom-card">{{project.projectName}}</h5> 
-							<p class="card-text custom-card">{{project.projectThumb}}</p>
-						</div>
-						</div>
-						<br/>
-						</a>
+                    <label>Skills:</label>
+                    <div class="scrollmenu">
+                        <span ng-repeat="skill in user.skills">
+                        <span class="btn btn-sm badge body-button badge-warning">
+                            <span>{{ skill }}</span>
+                        </span>
+                        </span>
                     </div>
-					
+                    <label>Projects</label>
+
+                    <div class="row">
+                        <div class="col-sm-6" ng-repeat="project in projects">
+                            <a href="/#/project/{{project.projectId}}">
+                                <div class="card cardBorder card-inverse">
+                                    <img class="card-img" src="static/images/whitecard.png" alt="Card image">
+                                    <div class="card-img-overlay">
+                                        <h5 class="card-title custom-card">{{project.projectName}}</h5>
+                                        <p class="card-text custom-card">{{project.projectThumb}}</p>
+                                    </div>
+                                </div>
+                                <br/>
+                            </a>
+                        </div>
+
                     </div>
                 </div>
             </div>
-		</div>
+        </div>
         <div class="col-md-3">
-			<div class="profile-sidebar customContainer">
-				<div class="profile-usertitle-job">
-					{{user.username}}
-				</div>
-				<!-- SIDEBAR USERPIC -->
-				<div class="profile-userpic">
-					<img src="\static\images\{{user.gender}}.jpg" class="img-responsive" alt="">
-				</div>
-				<!-- END SIDEBAR USERPIC -->
-				<!-- SIDEBAR USER TITLE -->
-				<div class="profile-usertitle">
-					<div class="profile-usertitle-name">
-						{{user.firstName}}{{user.surname}}<br/>
-					</div>
-					<div class="profile-usertitle-job">
-						{{user.occupation}}
-					</div>
-				</div>
-				<!-- END SIDEBAR USER TITLE -->
-				<!-- SIDEBAR BUTTONS -->
-				<div class="profile-userbuttons" ng-hide="currentUser">
-					<button type="button" class="btn btn-danger btn-sm">Message</button>
-				</div>
-				<hr/>
-				<!-- END SIDEBAR BUTTONS -->
-				<!-- SIDEBAR MENU -->
-				<div class="profile-usermenu" ng-show="currentUser">
-					<ul class="nav flex-column" id="exCollapsingNavbar3">
+            <div class="profile-sidebar customContainer">
+                <div class="profile-usertitle-job">
+                    {{user.username}}
+                </div>
+                <!-- SIDEBAR USERPIC -->
+                <div class="profile-userpic">
+                    <img src="\static\images\{{user.gender}}.jpg" class="img-responsive" alt="">
+                </div>
+                <!-- END SIDEBAR USERPIC -->
+                <!-- SIDEBAR USER TITLE -->
+                <div class="profile-usertitle">
+                    <div class="profile-usertitle-name">
+                        {{user.firstName}}{{user.surname}}
+                        <br/>
+                    </div>
+                    <div class="profile-usertitle-job">
+                        {{user.occupation}}
+                    </div>
+                    <div {{disabled}}>
+                        <i class="fa fa-star{{rating[0]}}" aria-hidden="true" ng-click="rate(1)"></i>
+                        <i class="fa fa-star{{rating[1]}}" aria-hidden="true" ng-click="rate(2)"></i>
+                        <i class="fa fa-star{{rating[2]}}" aria-hidden="true" ng-click="rate(3)"></i>
+                        <i class="fa fa-star{{rating[3]}}" aria-hidden="true" ng-click="rate(4)"></i>
+                        <i class="fa fa-star{{rating[4]}}" aria-hidden="true" ng-click="rate(5)"></i>
+                    </div>
+                </div>
+                <!-- END SIDEBAR USER TITLE -->
+                <!-- SIDEBAR BUTTONS -->
+                <div class="profile-userbuttons" ng-hide="currentUser">
+                    <button type="button" class="btn btn-danger btn-sm">Message</button>
+                </div>
+                <hr/>
+                <!-- END SIDEBAR BUTTONS -->
+                <!-- SIDEBAR MENU -->
+                <div class="profile-usermenu" ng-show="currentUser">
+                    <ul class="nav flex-column" id="exCollapsingNavbar3">
                         <li class="nav-item">
                             <a class="nav-link active " href="#/home">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#/project/create">Create Project</a>
                         </li>
-						<li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link" href="/#/pages/{{ user.username }}/edit">Edit User</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="" data-toggle="collapse" data-target="#collapseExample">Bookmarks</a>
+                            <div class="collapse" id="collapseExample">
+                                <div class="card card-block">
+                                    <span>
+									<ul class="nav flex-column" id="exCollapsingNavbar3">
+										<li class="nav-item" ng-repeat="bookmark in bookmarks">
+											<a class="nav-link active " href="/#/project/{{bookmark.projectId}}">{{bookmark.projectName}}</a>
+										</li>
+									</ul>
+                                </span>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
-				</div>
-				<!-- END MENU -->
-			</div>
-		</div>
-	</div>
+                </div>
+                <!-- END MENU -->
+            </div>
+        </div>
+    </div>
 </div>
-
-
-

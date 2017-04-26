@@ -8,7 +8,6 @@ angular.module('groupdApp')
 
         ProjectFactory.project.getProject($routeParams.projectId).then(function(d){
             if(d.message == "404"){
-                console.log(d.message);
                 $scope.projectFound = true;
                 $scope.errorMessage = "This project was not found!";
             }
@@ -28,9 +27,7 @@ angular.module('groupdApp')
               $scope.message = "There are more members than you've set!";
               $scope.project.maxMembers = $scope.project.projectMembers.length;
           }else{
-            console.log($scope.project.maxMembers + " " + $scope.project.projectMembers.length);
             ProjectFactory.project.putProject($scope.project).then(function(d){
-                console.log(d);
                 window.location = "/#/project/"+$scope.project.projectId;
             })
           }

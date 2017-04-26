@@ -9,18 +9,15 @@ angular.module('groupdApp')
         $scope.projectFound = false;
         $scope.errorMessage;
         $scope.placeholder = "Write a comment..";
-
         
 
         ProjectFactory.project.getProject($routeParams.projectId).then(function(d){
           if(d.message == "404"){
-              console.log(d.message);
               $scope.projectFound = true;
               $scope.errorMessage = "This project was not found!";
           }else{
             UserPageFactory.user.getUser(d.projectCreator).then(function(data){
                 if(!data){
-                  console.log(data);
                     alert("ERROR");
                 }else{
                     $scope.user = data;
@@ -37,7 +34,6 @@ angular.module('groupdApp')
                 }
                 });
                 $scope.project = d;
-                console.log(d);
           }
         });
 
@@ -64,7 +60,6 @@ angular.module('groupdApp')
         }else{
           $scope.project.comments.push({username:JSON.parse(AuthFactory.auth.getAuth()).username, comment: comment, time: new Date()});
            ProjectFactory.project.putProject($scope.project).then(function(d){
-          console.log(d);
           comment = "";
         });
       }
@@ -72,39 +67,44 @@ angular.module('groupdApp')
     }
 
     $scope.bookmarkProject = function(){
-      console.log("clicked " + $scope.project.projectId);
         UserFactory.user.getUser(JSON.parse(AuthFactory.auth.getAuth()).username).then(function(d){
-            d.bookmarks.push($scope.project.projectId);
-            UserFactory.user.putUser(d).then(function(d){
-                console.log(d);
+          var found = false;
+          for(var i in d.bookmarks){
+            if($scope.project.projectId == d.bookmarks[i])
+            {
+              found = true;
+            }
+            }
+          
+          if(found == false){
+               d.bookmarks.push($scope.project.projectId);
+              UserFactory.user.putUser(d).then(function(d){
             })
+          }
+
         });
     }
 
       function updateProject(){
         ProjectFactory.project.putProject($scope.project).then(function(d){
-          console.log(d);
         });
       }
 
       function updateUser(username, condition){
         UserFactory.user.getUser(username).then(function(d){
           if(!d){
-            console.log("error");
           }else{
             if(condition == 1){
                 for(var i = 0; i < d.projects.length; i++){
                 if(d.projects[i] == $scope.project.projectId){
                   d.projects.splice(i, 1);
                   UserFactory.user.putUser(d).then(function(d){
-                    console.log(d);
                   });
                 }
               }
             }else{
               d.projects.push($scope.project.projectId);
               UserFactory.user.putUser(d).then(function(d){
-                  console.log(d);
               });
             }
           }
@@ -151,14 +151,12 @@ angular.module('groupdApp')
                 }else{
                     $scope.searchpicture = "female.jpg";
                 }
-                console.log($scope.searchuser);
               }
             });
         }
 
         $scope.delete = function(){
           ProjectFactory.project.deleteProject($scope.project).then(function(d){
-            console.log(d);
             setTimeout(function(){window.location = "/#/home"}, 1500);
           })
         }

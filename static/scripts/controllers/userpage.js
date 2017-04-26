@@ -6,7 +6,9 @@ angular.module('groupdApp')
     $scope.currentUser = false;
     $scope.userFound = false;
     $scope.projects = [];
-
+    $scope.bookmarks = [];
+    $scope.rating = ["-o","-o","-o","-o","-o"];
+    
     UserFactory.user.getUser($routeParams.username).then(function(d){
         if(!d){
             $scope.errorMessage = "User with username: '"+$routeParams.username+"' was not found.";
@@ -20,12 +22,18 @@ angular.module('groupdApp')
             }
         }
     });
-
+    
     ProjectFactory.project.getProjects().then(function(d){
         for(var i in d){
             for(var j in $scope.user.projects){
                 if($scope.user.projects[j] == d[i].projectId){
                     $scope.projects.push(d[i]);
+                }
+                
+            }
+            for(var p in $scope.user.bookmarks){
+                if($scope.user.bookmarks[p] == d[i].projectId){
+                    $scope.bookmarks.push(d[i]);
                 }
             }
         }

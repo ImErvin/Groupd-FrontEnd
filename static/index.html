@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Groupd</title>
     <link rel="stylesheet" href="static/bower_components/bootstrap/dist/css/bootstrap.css" />
@@ -8,78 +9,65 @@
     <link rel="stylesheet" href="static/styles/main.css">
     <link rel="icon" type="image/ico" href="static/images/favicon.png">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu">
-
     <!-- Loading Frameworks and Libraries to avoid buttons flickering on loadup -->
-    
-  </head>
+</head>
 
-  <body class="indexBody" ng-app="groupdApp"> 
+<body class="indexBody" ng-app="groupdApp">
     <div ng-cloak>
-      
-      <!-- Basic template adapted from - http://v4-alpha.getbootstrap.com/examples/jumbotron/  -->
-      <nav class="navbar navbar-toggleable-md navbar-inverse navColor sticky-top bg-inverse" ng-controller="HeaderCtrl">
-        <div class="container">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#collapse" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="#/welcome">
-            <img src="static/images/mainLogo1.png" width="204" height="53" class="d-inline-block align-top" alt="">
-        </a>
-        
-        <div class="collapse navbar-collapse" id="collapse">
-          <ul class="navbar-nav mr-auto">
-          </ul>
-          <form class="form-inline my-2 my-lg-0" ng-show="show">
-            <a class="btn header-button my-2 my-sm-0" href="#/login">Login </a>&nbsp;
-            <a class="btn header-button my-2 my-sm-0" href="#/signup">Sign up</a>
-          </form>
-          <form class="form-inline my-2 my-lg-0" ng-hide="show">
-            <a class="btn header-button my-2 my-sm-0" href="#/pages/{{username}}">Profile</a>&nbsp;
-            <a class="btn header-button my-2 my-sm-0" href="" ng-click="logout()">Logout</a>
-            <div class="input-group">&nbsp;
-          <form class="form-inline">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search" aria-describedby="basic-addon1">
-                <button class="btn header-button input-group-addon" id="basic-addon1">Search</button>
-              </div>
-          </form>
-          </form>
+        <!-- Basic template adapted from - http://v4-alpha.getbootstrap.com/examples/jumbotron/  -->
+        <nav class="navbar navbar-toggleable-md navbar-inverse navColor sticky-top bg-inverse" ng-controller="HeaderCtrl">
+            <div class="container">
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#collapse" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" href="#/welcome">
+                    <img src="static/images/mainLogo1.png" width="204" height="53" class="d-inline-block align-top" alt="">
+                </a>
+                <div class="collapse navbar-collapse" id="collapse">
+                    <ul class="navbar-nav mr-auto">
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0" ng-show="show">
+                        <a class="btn header-button my-2 my-sm-0" href="#/login">Login </a>&nbsp;
+                        <a class="btn header-button my-2 my-sm-0" href="#/signup">Sign up</a>
+                    </form>
+                    <form class="form-inline my-2 my-lg-0" ng-hide="show">
+                        <a class="btn header-button my-2 my-sm-0" href="#/pages/{{username}}">Profile</a>&nbsp;
+                        <a class="btn header-button my-2 my-sm-0" href="" ng-click="logout()">Logout</a>
+                    </form>
+                    </div>
+        </nav>
         </div>
-      </nav>
-    </div>
-    </div>
 
-    <ng-view></ng-view>
+        <ng-view></ng-view>
 
-    <script type="text/javascript" src="static/bower_components/jquery/dist/jquery.js"></script>
-    <script type="text/javascript" src="static/bower_components/angular/angular.js"></script>
-    <script type="text/javascript" src="static/bower_components/tether/dist/js/tether.js"></script>
-    <script type="text/javascript" src="static/bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script type="text/javascript" src="static/bower_components/angular-animate/angular-animate.js"></script>
-    <script type="text/javascript" src="static/bower_components/angular-cookies/angular-cookies.js"></script>
-    <script type="text/javascript" src="static/bower_components/angular-messages/angular-messages.js"></script>
-    <script type="text/javascript" src="static/bower_components/angular-resource/angular-resource.js"></script>
-    <script type="text/javascript" src="static/bower_components/angular-route/angular-route.js"></script>
-    <script type="text/javascript" src="static/bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script type="text/javascript" src="static/bower_components/angular-filter/dist/angular-filter.js"></script>
-
-    <script type="text/javascript" src="static/scripts/app.js"></script>
-    <script type="text/javascript" src="static/scripts/controllers/main.js"></script>
-    <script type="text/javascript" src="static/scripts/controllers/home.js"></script>
-    <script type="text/javascript" src="static/scripts/controllers/signup.js"></script>
-    <script type="text/javascript" src="static/scripts/controllers/login.js"></script>
-    <script type="text/javascript" src="static/scripts/controllers/header.js"></script>
-    <script type="text/javascript" src="static/scripts/controllers/userpage.js"></script>
-    <script type="text/javascript" src="static/scripts/controllers/createproject.js"></script>
-    <script type="text/javascript" src="static/scripts/controllers/projectpage.js"></script>
-    <script type="text/javascript" src="static/scripts/controllers/projectpageedit.js"></script>
-    <script type="text/javascript" src="static/scripts/controllers/userpageedit.js"></script>
-    <script type="text/javascript" src="static/scripts/services/userFactory.js"></script>
-    <script type="text/javascript" src="static/scripts/services/apiFactory.js"></script>
-    <script type="text/javascript" src="static/scripts/services/authFactory.js"></script>
-    <script type="text/javascript" src="static/scripts/services/projectFactory.js"></script>
-    <script type="text/javascript" src="static/scripts/services/userpageFactory.js"></script>
-
+        <script type="text/javascript" src="static/bower_components/jquery/dist/jquery.js"></script>
+        <script type="text/javascript" src="static/bower_components/angular/angular.js"></script>
+        <script type="text/javascript" src="static/bower_components/tether/dist/js/tether.js"></script>
+        <script type="text/javascript" src="static/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script type="text/javascript" src="static/bower_components/angular-animate/angular-animate.js"></script>
+        <script type="text/javascript" src="static/bower_components/angular-cookies/angular-cookies.js"></script>
+        <script type="text/javascript" src="static/bower_components/angular-messages/angular-messages.js"></script>
+        <script type="text/javascript" src="static/bower_components/angular-resource/angular-resource.js"></script>
+        <script type="text/javascript" src="static/bower_components/angular-route/angular-route.js"></script>
+        <script type="text/javascript" src="static/bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <script type="text/javascript" src="static/bower_components/angular-filter/dist/angular-filter.js"></script>
+        <script type="text/javascript" src="static/scripts/app.js"></script>
+        <script type="text/javascript" src="static/scripts/controllers/main.js"></script>
+        <script type="text/javascript" src="static/scripts/controllers/home.js"></script>
+        <script type="text/javascript" src="static/scripts/controllers/signup.js"></script>
+        <script type="text/javascript" src="static/scripts/controllers/login.js"></script>
+        <script type="text/javascript" src="static/scripts/controllers/header.js"></script>
+        <script type="text/javascript" src="static/scripts/controllers/userpage.js"></script>
+        <script type="text/javascript" src="static/scripts/controllers/createproject.js"></script>
+        <script type="text/javascript" src="static/scripts/controllers/projectpage.js"></script>
+        <script type="text/javascript" src="static/scripts/controllers/projectpageedit.js"></script>
+        <script type="text/javascript" src="static/scripts/controllers/userpageedit.js"></script>
+        <script type="text/javascript" src="static/scripts/services/userFactory.js"></script>
+        <script type="text/javascript" src="static/scripts/services/apiFactory.js"></script>
+        <script type="text/javascript" src="static/scripts/services/authFactory.js"></script>
+        <script type="text/javascript" src="static/scripts/services/projectFactory.js"></script>
+        <script type="text/javascript" src="static/scripts/services/userpageFactory.js"></script>
 
 </body>
+
 </html>

@@ -1,13 +1,14 @@
 <div class="jumbotron headerJumbotron" ng-show="projectFound">
-  <div class="container">
-    <h1 class="display-5">{{errorMessage}}</h1>
-    <p><a class="btn header-button btn-lg" href="#/home">Return Home &raquo;</a></p>
-  </div>
+    <div class="container">
+        <h1 class="display-5">{{errorMessage}}</h1>
+        <p><a class="btn header-button btn-lg" href="#/home">Return Home &raquo;</a>
+        </p>
+    </div>
 </div>
 
 <div class="container" ng-hide="projectFound">
     <div class="row profile">
-		<div class="col-md-9">
+        <div class="col-md-9">
             <div class="profile-content customContainer">
                 <div>
                     <p class="profile-usertitle-name">{{project.projectName}}</p>
@@ -20,187 +21,188 @@
                     </div>
                     <div class="form-group">
                         <label>Project Members</label>
-                    <div class="row">
-                        <div class="col-sm-4" ng-repeat="member in project.projectMembers">
-                        <a href="/#/pages/{{member}}">
-                        <div class="card card-inverse">
-                        <img class="card-img profile-userpic" src="\static\images\{{user.gender}}.jpg" alt="Card image" style="height: 180px !important">
-                        <div class="card-img-overlay">
-                            
+                        <div class="row">
+                            <div class="col-sm-4" ng-repeat="member in project.projectMembers">
+                                <a href="/#/pages/{{member}}">
+                                    <div class="card card-inverse">
+                                        <img class="card-img profile-userpic" src="\static\images\{{user.gender}}.jpg" alt="Card image" style="height: 180px !important">
+                                        <div class="card-img-overlay">
+
+                                        </div>
+                                        <div class="card-footer">
+                                            <p class="card-text text-center custom-card"><small class="text-muted">{{ member }}</small>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                </a>
+                            </div>
                         </div>
-                        <div class="card-footer">
-                        <p class="card-text text-center custom-card"><small class="text-muted">{{ member }}</small></p>
-                        </div>
-                        </div>
-                        <br/>
-                        </a>
-                        </div>
+
                     </div>
-                    
-                    </div>   
                 </div>
                 <hr/>
-                    <label>Tags</label>
-                    <div class="scrollmenu">
+                <label>Tags</label>
+                <div class="scrollmenu">
                     <span ng-repeat="tag in project.tags">
                         <span class="btn btn-sm badge body-button badge-warning">
                             <span>{{ tag }}</span>
-                        </span>
                     </span>
-                    </div>
+                    </span>
+                </div>
             </div>
-		</div>
+        </div>
         <div class="col-md-3">
-			<div class="profile-sidebar customContainer">
-				<!-- SIDEBAR USERPIC -->
+            <div class="profile-sidebar customContainer">
+                <!-- SIDEBAR USERPIC -->
                 <p class="profile-usertitle-name">Project Creator</p>
-				<div class="profile-userpic">
-					<a href="/#/pages/{{user.username}}">
-                    <img src="\static\images\{{user.gender}}.jpg" class="img-responsive" alt="">
-					</a>
-				</div>
-				<!-- END SIDEBAR USERPIC -->
-				<!-- SIDEBAR USER TITLE -->
-				<div class="profile-usertitle">
-					<div class="profile-usertitle-name" ng-hide="currentUser">
-						{{user.firstName}}{{user.surname}}
-					</div>
+                <div class="profile-userpic">
+                    <a href="/#/pages/{{user.username}}">
+                        <img src="\static\images\{{user.gender}}.jpg" class="img-responsive" alt="">
+                    </a>
+                </div>
+                <!-- END SIDEBAR USERPIC -->
+                <!-- SIDEBAR USER TITLE -->
+                <div class="profile-usertitle">
+                    <div class="profile-usertitle-name" ng-hide="currentUser">
+                        {{user.firstName}}{{user.surname}}
+                    </div>
                     <div class="profile-usertitle-name" ng-show="currentUser">
-						You
-					</div>
-				</div>
-				<!-- END SIDEBAR USER TITLE -->
-				<!-- SIDEBAR BUTTONS -->
-				<!-- END SIDEBAR BUTTONS -->
-				<!-- SIDEBAR MENU -->
-				<div class="profile-usermenu" ng-show="currentUser">
-					<ul class="nav flex-column" id="exCollapsingNavbar3">
+                        You
+                    </div>
+                </div>
+                <!-- END SIDEBAR USER TITLE -->
+                <!-- SIDEBAR BUTTONS -->
+                <!-- END SIDEBAR BUTTONS -->
+                <!-- SIDEBAR MENU -->
+                <div class="profile-usermenu" ng-show="currentUser">
+                    <ul class="nav flex-column" id="exCollapsingNavbar3">
                         <li class="nav-item">
                             <a class="nav-link" href="" data-toggle="modal" data-target="#addUser">Add Member</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="" data-toggle="collapse" data-target="#collapseExample" ng-click="showError = false">Remove Member</a>
                             <div class="collapse" id="collapseExample">
-                            <div class="card card-block">
-                                <span ng-repeat="member in project.projectMembers">
+                                <div class="card card-block">
+                                    <span ng-repeat="member in project.projectMembers">
                                     <div ng-if="member == project.projectCreator">
                                         <span class="btn btn-block badge badge-warning" ng-click="removeMember(member)">
                                             <span>{{ member }} </span>
-                                        </span>
-                                    </div>
-                                    <div ng-if="member != project.projectCreator">
-                                        <span class="btn btn-block badge body-button badge-warning" ng-click="removeMember(member)">
+                                    </span>
+                                </div>
+                                <div ng-if="member != project.projectCreator">
+                                    <span class="btn btn-block badge body-button badge-warning" ng-click="removeMember(member)">
                                             <span>{{ member }}</span><span class="float-left">&times;</span>
-                                        </span>
-                                    </div>
-                                
+                                    </span>
+                                </div>
+
                                 </span>
                             </div>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/#/project/{{project.projectId}}/edit">Edit Project</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="" data-toggle="modal" data-target="#delete">Delete Project</a>
-                        </li>
-                    </ul>
-				</div>
-                <div class="profile-usermenu" ng-hide="currentUser">
-                    <ul class="nav flex-column" id="exCollapsingNavbar3">
-                        <li class="nav-item" ng-click="bookmarkProject()">
-                            <a class="nav-link" href="">Bookmark Project</a>
-                        </li>
-                    </ul>
                 </div>
-				<!-- END MENU -->
-			</div>
-		</div>
-        <div class="col-md-9">
-            <div class="projectComments customContainer">
-                <div class="form-group">
-                    <textarea class="form-control" id="projectDescTextarea" ng-model="comment" placeholder="{{placeholder}}" rows="3"></textarea>
-                    <button class="btn btn-sm body-button float-left" ng-click="addComment(comment)">Send</button> <br/>
-                    <hr/>
-                </div>
-                <div style="text-align: left !important">
-                    <div class="card" ng-repeat="comment in project.comments | orderBy:'-'">
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/#/project/{{project.projectId}}/edit">Edit Project</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="" data-toggle="modal" data-target="#delete">Delete Project</a>
+                </li>
+                </ul>
+            </div>
+            <div class="profile-usermenu" ng-hide="currentUser">
+                <ul class="nav flex-column" id="exCollapsingNavbar3">
+                    <li class="nav-item" ng-click="bookmarkProject()">
+                        <a class="nav-link" href="">Bookmark Project</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- END MENU -->
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="projectComments customContainer">
+            <div class="form-group">
+                <textarea class="form-control" id="projectDescTextarea" ng-model="comment" placeholder="{{placeholder}}" rows="3"></textarea>
+                <button class="btn btn-sm body-button float-left" ng-click="addComment(comment)">Send</button>
+                <br/>
+                <hr/>
+            </div>
+            <div style="text-align: left !important">
+                <div class="card" ng-repeat="comment in project.comments | orderBy:'-'">
                     <div class="card-header">
                         <a class="text-muted" href="/#/pages/{{comment.username}}">{{comment.username }}</a>
                         <span class="float-right text-muted">{{comment.time | date:'medium'}}</span>
                     </div>
                     <div class="card-block">
                         <blockquote class="card-blockquote">
-                        <p>{{ comment.comment}}</p>
+                            <p>{{ comment.comment}}</p>
                         </blockquote>
-                    </div>
                     </div>
                 </div>
             </div>
         </div>
-	</div>
+    </div>
+</div>
 </div>
 
 <!-- Modal -->
 <div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-        <form class="form-inline float-right" name="searchbar">
-              <div class="input-group">
-                <input type="text" class="form-control" ng-model="searchUsername" placeholder="Search" aria-describedby="basic-addon1" required>
-                <button class="btn header-button input-group-addon" ng-click="search()" id="basic-addon1"  ng-disabled="searchbar.$invalid">Search</button> 
-              </div>
-          </form>
-      </div>
-      <div class="modal-body">
-        <p ng-hide="userfound" class="message">{{ searchmessage }}</p>  
-        <div ng-show="userfound">
-            <p class="message">{{ searchmessage }}</p>
-            <div class="row">
-                <div class="col-sm-6">
-                <a href="">
-                <div class="card card-inverse">
-                <img class="card-img profile-userpic" src="\static\images\{{searchuser.gender}}.jpg" alt="Card image">
-                <div class="card-img-overlay">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <form class="form-inline float-right" name="searchbar">
+                    <div class="input-group">
+                        <input type="text" class="form-control" ng-model="searchUsername" placeholder="Search" aria-describedby="basic-addon1" required>
+                        <button class="btn header-button input-group-addon" ng-click="search()" id="basic-addon1" ng-disabled="searchbar.$invalid">Search</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-body">
+                <p ng-hide="userfound" class="message">{{ searchmessage }}</p>
+                <div ng-show="userfound">
+                    <p class="message">{{ searchmessage }}</p>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <a href="">
+                                <div class="card card-inverse">
+                                    <img class="card-img profile-userpic" src="\static\images\{{searchuser.gender}}.jpg" alt="Card image">
+                                    <div class="card-img-overlay">
+                                    </div>
+                                    <div class="card-footer">
+                                        <p class="card-text text-center custom-card"><small class="text-muted">{{ searchuser.username }}</small>
+                                        </p>
+                                    </div>
+                                </div>
+                                <br/>
+                            </a>
+                        </div>
+                        <div class="col-sm-6">
+                            <button class="btn btn-block body-button" style="vertical-align: bottom !important" ng-click="addMember()">Add Member</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-footer">
-                <p class="card-text text-center custom-card"><small class="text-muted">{{ searchuser.username }}</small></p>
-                </div>
-                </div>
-                <br/>
-                </a>
-                </div>
-                <div class="col-sm-6">
-                    <button class="btn btn-block body-button" style="vertical-align: bottom !important" ng-click="addMember()">Add Member</button>
-                </div>
-            </div>                
+            </div>
         </div>
-        </div>
-      </div>
     </div>
-  </div>
+</div>
 </div>
 
 <!-- Modal -->
 <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Are you sure you want to delete this project? Deleting this project could upset the team! <br/>
-        You can always edit the project instead of deleting it!
-      </div>
-      <div class="modal-footer">
-        <button data-dismiss="modal" type="button" class="btn btn-block body-button" ng-click="delete()" >Delete</button>
-      </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this project? Deleting this project could upset the team!
+                <br/> You can always edit the project instead of deleting it!
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" type="button" class="btn btn-block body-button" ng-click="delete()">Delete</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
-
-

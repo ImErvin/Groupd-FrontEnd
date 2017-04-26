@@ -113,7 +113,9 @@ div.scrollmenu {
     overflow: auto;
     white-space: nowrap;
 }
-
+.fa-star-o:hover {
+    color: #DF0F25;
+}
 div.scrollmenu a {
     display: inline-block;
     color: white;
