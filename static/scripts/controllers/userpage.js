@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('groupdApp')
-  .controller('UserPageCtrl',['UserFactory','AuthFactory','$scope','$routeParams',
-  function (UserFactory,AuthFactory, $scope, $routeParams) {
+  .controller('UserPageCtrl',['UserFactory','ProjectFactory', 'AuthFactory','$scope','$routeParams',
+  function (UserFactory, ProjectFactory, AuthFactory, $scope, $routeParams) {
     $scope.currentUser = false;
     $scope.userFound = false;
+    $scope.projects = [];
 
     UserFactory.user.getUser($routeParams.username).then(function(d){
         if(!d){
@@ -19,5 +20,14 @@ angular.module('groupdApp')
             }
         }
     });
-    
+
+    ProjectFactory.project.getProjects().then(function(d){
+        for(var i in d){
+            for(var j in $scope.user.projects){
+                if($scope.user.projects[j] == d[i].projectId){
+                    $scope.projects.push(d[i]);
+                }
+            }
+        }
+    })
   }]);

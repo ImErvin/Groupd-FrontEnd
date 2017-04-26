@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('groupdApp')
-  .controller('CreateProjectCtrl',['ProjectFactory','AuthFactory', '$scope', '$location',
-  function (ProjectFactory, AuthFactory, $scope, $location) {
+  .controller('CreateProjectCtrl',['ProjectFactory','UserFactory', 'AuthFactory', '$scope', '$location',
+  function (ProjectFactory, UserFactory, AuthFactory, $scope, $location) {
 
     $scope.project = {
         projectName: null,
@@ -22,6 +22,7 @@ angular.module('groupdApp')
         console.log($scope.project);
         ProjectFactory.project.postProject($scope.project).then(function(d){
           if(d.message="Project Added"){
+            updateUser($scope.project.projectCreator, d.id);
             window.location = "/#/project/"+d.id;
           }
           console.log(d);
@@ -29,6 +30,19 @@ angular.module('groupdApp')
     }
     
     $scope.tag;
+
+    function updateUser(username, projectId){
+      UserFactory.user.getUser(username).then(function(d){
+        if(!d){
+          console.log("error");
+        }else{
+          d.projects.push(projectId);
+          UserFactory.user.putUser(d).then(function(d){
+              console.log(d);
+          });
+      }
+      })
+    }
     
 
     $scope.addTag = function(tag){

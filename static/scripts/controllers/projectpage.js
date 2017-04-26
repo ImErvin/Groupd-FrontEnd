@@ -71,6 +71,16 @@ angular.module('groupdApp')
       
     }
 
+    $scope.bookmarkProject = function(){
+      console.log("clicked " + $scope.project.projectId);
+        UserFactory.user.getUser(JSON.parse(AuthFactory.auth.getAuth()).username).then(function(d){
+            d.bookmarks.push($scope.project.projectId);
+            UserFactory.user.putUser(d).then(function(d){
+                console.log(d);
+            })
+        });
+    }
+
       function updateProject(){
         ProjectFactory.project.putProject($scope.project).then(function(d){
           console.log(d);

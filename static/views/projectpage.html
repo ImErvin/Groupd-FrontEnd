@@ -71,9 +71,6 @@
 				</div>
 				<!-- END SIDEBAR USER TITLE -->
 				<!-- SIDEBAR BUTTONS -->
-				<div class="profile-userbuttons" ng-hide="currentUser">
-					<button type="button" class="btn btn-danger btn-sm">Message</button>
-				</div>
 				<!-- END SIDEBAR BUTTONS -->
 				<!-- SIDEBAR MENU -->
 				<div class="profile-usermenu" ng-show="currentUser">
@@ -109,6 +106,13 @@
                         </li>
                     </ul>
 				</div>
+                <div class="profile-usermenu" ng-hide="currentUser">
+                    <ul class="nav flex-column" id="exCollapsingNavbar3">
+                        <li class="nav-item" ng-click="bookmarkProject()">
+                            <a class="nav-link" href="">Bookmark Project</a>
+                        </li>
+                    </ul>
+                </div>
 				<!-- END MENU -->
 			</div>
 		</div>
