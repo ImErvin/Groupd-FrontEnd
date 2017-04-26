@@ -51,32 +51,40 @@ angular.module('groupdApp', ['ngCookies', 'ngRoute'])
                 controllerAs: 'userpageedit',
                 authenticated: true
             })
+            // Sign up route, to sign up
             .when('/signup', {
                 templateUrl: 'static/views/signup.html',
                 controller: 'SignupCtrl',
                 controllerAs: 'signup'
             })
+            // Sign in route, to sign in
             .when('/login', {
                 templateUrl: 'static/views/login.html',
                 controller: 'LoginCtrl',
                 controllerAs: 'login'
             })
+            // Default is the unauthenticated route
             .otherwise({
                 redirectTo: '/welcome'
             });
-
+        
+        // To get rid of ! in the url adapted from : https://scotch.io/tutorials/pretty-urls-in-angularjs-removing-the-hashtag
         $locationProvider.hashPrefix('');
     })
 
     .run(['$rootScope', '$location', 'AuthFactory',
         function($rootScope, $location, AuthFactory) {
+            // If the user is authenticated, they cannot navigate to the unauthenticated landing page, instead
+            // they're redirected to the authenticated landing page. [User experience]
             $rootScope.$on('$routeChangeStart', function(event, nextRoute, currRoute) {
                 if (nextRoute.$$route.originalPath == "/welcome" && AuthFactory.auth.getAuth() ||
                     nextRoute.$$route.originalPath == "/login" && AuthFactory.auth.getAuth() ||
                     nextRoute.$$route.originalPath == "/signup" && AuthFactory.auth.getAuth()) {
                     $location.path('/home');
                 }
-
+                
+                // If they're not authenticated and the route required authentication, send them to the login
+                // screen. [Security] [User experience]
                 if (nextRoute.$$route.authenticated) {
                     if (!AuthFactory.auth.getAuth()) {
                         $location.path("/login");

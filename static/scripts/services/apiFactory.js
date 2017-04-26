@@ -1,3 +1,9 @@
+// Purpose of this factory is to keep all the http requests to the API in one place.
+// This factory is never directly connected to a controller, instead other factories use
+// this one to make calls and pass the data to the controllers.
+// One benefit of this is, if any changes were to happen to routes, i'd simply change them here
+// and controllers/factories are up to date with the change.
+
 angular.module('groupdApp')
     .factory('APIFactory', ['$http', '$q',
         function($http, $q) {
@@ -5,6 +11,7 @@ angular.module('groupdApp')
             var user = {};
             var project = {};
 
+            // Retrieve all users;
             user.getUsers = function() {
                 var deferred = $q.defer();
 
@@ -15,7 +22,6 @@ angular.module('groupdApp')
                         'Content-Type': 'application/json'
                     },
                 }).then(function success(response) {
-                    //console.log(response.data.text);
 
                     deferred.resolve(response)
                 }).catch(function(error) {
@@ -25,6 +31,7 @@ angular.module('groupdApp')
                 return deferred.promise;
             }
 
+            // Create a user;
             user.postUser = function(user) {
                 var deferred = $q.defer();
 
@@ -39,7 +46,6 @@ angular.module('groupdApp')
                     },
                     data: user,
                 }).then(function success(response) {
-                    //console.log(response.data.text);
 
                     deferred.resolve(response)
                 }).catch(function(error) {
@@ -49,6 +55,7 @@ angular.module('groupdApp')
                 return deferred.promise;
             }
 
+            // Retrieve one user.
             user.getUser = function(username) {
                 var deferred = $q.defer();
 
@@ -67,6 +74,7 @@ angular.module('groupdApp')
                 return deferred.promise;
             }
 
+            // Update a user.
             user.putUser = function(user) {
                 var deferred = $q.defer();
 
@@ -90,6 +98,7 @@ angular.module('groupdApp')
                 return deferred.promise;
             }
 
+            // Delete a user. (Not implemented but planned for future development)
             project.deleteUser = function(user) {
                 var deferred = $q.defer();
 
@@ -113,6 +122,7 @@ angular.module('groupdApp')
                 return deferred.promise;
             }
 
+            // Retrieve one project
             project.getProject = function(projectId) {
                 var deferred = $q.defer();
 
@@ -131,6 +141,7 @@ angular.module('groupdApp')
                 return deferred.promise;
             }
 
+            // Retrieve all projects;
             project.getProjects = function() {
                 var deferred = $q.defer();
 
@@ -149,6 +160,7 @@ angular.module('groupdApp')
                 return deferred.promise;
             }
 
+            // Create a project
             project.postProject = function(project) {
                 var deferred = $q.defer();
 
@@ -172,6 +184,7 @@ angular.module('groupdApp')
                 return deferred.promise;
             }
 
+            // Update a project.
             project.putProject = function(project) {
                 var deferred = $q.defer();
 
@@ -195,6 +208,7 @@ angular.module('groupdApp')
                 return deferred.promise;
             }
 
+            // Delete a project.
             project.deleteProject = function(project) {
                 var deferred = $q.defer();
 

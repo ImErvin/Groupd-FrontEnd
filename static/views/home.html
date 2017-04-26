@@ -3,7 +3,7 @@
     <a href="/#/project/create" class="btn btn-block body-button">Be the first to create a project!</a>
 </div>
 
-<div class="container">
+<div class="container" ng-hide="noProjects">
     <div class="input-group" style="margin-bottom: 10px !important">
         <input type="text" class="form-control" placeholder="Search" ng-model="searchWord" aria-describedby="basic-addon1">
         <button class="btn body-button input-group-addon" id="basic-addon1" ng-click="search()">Search</button>
