@@ -38,7 +38,6 @@ angular.module('groupdApp')
                 });
                 $scope.project = d;
                 console.log(d);
-                $scope.project.comments.reverse();
           }
         });
 
@@ -53,6 +52,7 @@ angular.module('groupdApp')
               $scope.showError = false;
               $scope.project.projectMembers.splice(i, 1);
               updateProject();
+              updateUser(member, 1);
             }
           }
         }
@@ -65,15 +65,40 @@ angular.module('groupdApp')
           $scope.project.comments.push({username:JSON.parse(AuthFactory.auth.getAuth()).username, comment: comment, time: new Date()});
            ProjectFactory.project.putProject($scope.project).then(function(d){
           console.log(d);
+          comment = "";
         });
       }
       
-      }
+    }
 
       function updateProject(){
         ProjectFactory.project.putProject($scope.project).then(function(d){
           console.log(d);
         });
+      }
+
+      function updateUser(username, condition){
+        UserFactory.user.getUser(username).then(function(d){
+          if(!d){
+            console.log("error");
+          }else{
+            if(condition == 1){
+                for(var i = 0; i < d.projects.length; i++){
+                if(d.projects[i] == $scope.project.projectId){
+                  d.projects.splice(i, 1);
+                  UserFactory.user.putUser(d).then(function(d){
+                    console.log(d);
+                  });
+                }
+              }
+            }else{
+              d.projects.push($scope.project.projectId);
+              UserFactory.user.putUser(d).then(function(d){
+                  console.log(d);
+              });
+            }
+          }
+        })
       }
 
         $scope.addMember = function(){
@@ -93,7 +118,9 @@ angular.module('groupdApp')
             {
               $scope.project.projectMembers.push($scope.searchuser.username);
               $scope.searchmessage = $scope.searchuser.username + " was added to the team!";
+
               updateProject();
+              updateUser($scope.searchuser.username, 2);
             }
           }
         }

@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('groupdApp')
-  .controller('ProjectPageEditCtrl',['ProjectFactory','$scope', '$routeParams', "$location",'UserPageFactory','AuthFactory',
-      function (ProjectFactory, $scope, $routeParams, $location, UserPageFactory, AuthFactory) {
+  .controller('ProjectPageEditCtrl',['ProjectFactory','$scope', '$routeParams', "$location",'AuthFactory',
+      function (ProjectFactory, $scope, $routeParams, $location, AuthFactory) {
         $scope.projectFound = false;
         $scope.message = "Enter required (*) fields.";
 

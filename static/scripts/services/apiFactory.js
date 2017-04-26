@@ -48,6 +48,52 @@ function($http, $q){
         return deferred.promise;
     }
 
+    user.putUser = function(user){
+        var deferred = $q.defer();
+
+        if(typeof user === "object"){
+            user = JSON.stringify(user);
+        }
+        
+        $http({
+            method: 'PUT',
+            url: 'http://127.0.0.1:8080/api/users/'+user.username,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: user,
+        }).then(function success(response) {
+            deferred.resolve(response);
+        }).catch(function(error){
+            deferred.reject(error);
+        });
+
+        return deferred.promise;
+    }
+
+    project.deleteUser = function(user){
+        var deferred = $q.defer();
+
+        if(typeof user === "object"){
+            project = JSON.stringify(user);
+        }
+        
+        $http({
+            method: 'DELETE',
+            url: 'http://127.0.0.1:8080/api/projects/'+user.username,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: user,
+        }).then(function success(response) {
+            deferred.resolve(response);
+        }).catch(function(error){
+            deferred.reject(error);
+        });
+
+        return deferred.promise;
+    }
+
     project.getProject = function(projectId){
         var deferred = $q.defer();
 

@@ -9,10 +9,8 @@
     <div class="row profile">
 		<div class="col-md-9">
             <div class="profile-content customContainer">
-				<div class="profile-header"></div>
                 <div>
                     <p class="profile-usertitle-name">{{project.projectName}}</p>
-                    <hr/>
                 </div>
                 <div style="text-align: left !important">
                     <p class="message" ng-show="showError">{{ showErrorMessage }}</p>
@@ -28,6 +26,7 @@
                         <div class="card card-inverse">
                         <img class="card-img profile-userpic" src="\static\images\{{user.gender}}.jpg" alt="Card image" style="height: 180px !important">
                         <div class="card-img-overlay">
+                            
                         </div>
                         <div class="card-footer">
                         <p class="card-text text-center custom-card"><small class="text-muted">{{ member }}</small></p>
@@ -40,6 +39,15 @@
                     
                     </div>   
                 </div>
+                <hr/>
+                    <label>Tags</label>
+                    <div class="scrollmenu">
+                    <span ng-repeat="tag in project.tags">
+                        <span class="btn btn-sm badge body-button badge-warning">
+                            <span>{{ tag }}</span>
+                        </span>
+                    </span>
+                    </div>
             </div>
 		</div>
         <div class="col-md-3">
@@ -80,7 +88,7 @@
                                 <span ng-repeat="member in project.projectMembers">
                                     <div ng-if="member == project.projectCreator">
                                         <span class="btn btn-block badge badge-warning" ng-click="removeMember(member)">
-                                            <span>{{ member }}</span>
+                                            <span>{{ member }} </span>
                                         </span>
                                     </div>
                                     <div ng-if="member != project.projectCreator">
@@ -112,9 +120,9 @@
                     <hr/>
                 </div>
                 <div style="text-align: left !important">
-                    <div class="card" ng-repeat="comment in project.comments">
+                    <div class="card" ng-repeat="comment in project.comments | orderBy:'-'">
                     <div class="card-header">
-                        <a class="text-muted" href="/#/pages/{{comment.username}}">{{comment.username}}</a>
+                        <a class="text-muted" href="/#/pages/{{comment.username}}">{{comment.username }}</a>
                         <span class="float-right text-muted">{{comment.time | date:'medium'}}</span>
                     </div>
                     <div class="card-block">

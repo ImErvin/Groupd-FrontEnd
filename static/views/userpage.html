@@ -45,13 +45,25 @@
 				<div class="profile-usermenu" ng-show="currentUser">
 					<ul class="nav flex-column" id="exCollapsingNavbar3">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#/home">Home</a>
+                            <a class="nav-link active " href="#/home">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#/project/create">Create Project</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">User Settings</a>
+						<li class="nav-item">
+                            <a class="nav-link" href="" data-toggle="collapse" data-target="#collapseExample">User Settings</a>
+                            <div class="collapse" id="collapseExample">
+                            <div class="card card-block">
+                                <ul class="nav flex-column" id="exCollapsingNavbar3">
+									<li class="nav-item">
+										<a class="nav-link  badge-default" href="/#/pages/{{ user.username }}/edit"  style="color: white !important">Edit User</a>
+									</li>
+									<li class="nav-item ">
+										<a class="nav-link badge-danger" href=""  style="color: white !important">Delete User</a>
+									</li>
+								</ul>
+                            </div>
+                            </div>
                         </li>
                     </ul>
 				</div>

@@ -31,15 +31,16 @@ angular.module('groupdApp',['ngAnimate','ngCookies','ngMessages','ngResource','n
         controllerAs: 'projectpageedit',
         authenticated: true
       })
-      .when('/search/:searchkeyword', {
-        templateUrl: 'static/views/searchresult.html',
-        controller: 'SearchCtrl',
-        controllerAs: 'searchctrl'
-      })
       .when('/pages/:username', {
         templateUrl: 'static/views/userpage.html',
         controller: 'UserPageCtrl',
         controllerAs: 'userpage'
+      })
+      .when('/pages/:username/edit', {
+        templateUrl: 'static/views/userpageedit.html',
+        controller: 'UserPageEditCtrl',
+        controllerAs: 'userpageedit',
+        authenticated: true
       })
       .when('/signup', {
         templateUrl: 'static/views/signup.html',
