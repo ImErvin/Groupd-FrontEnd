@@ -7,10 +7,7 @@ Groupd was developed as my end of year project for Third Year Software Developme
 The idea behind Groupd was to design a social network for start up projects, where users can list or join projects that have vacant positions.
 
 ### Planning Phase
-Before I started any sort of coding, I wanted to have a challenging enough idea that could 
-
 #### *Technologies Considered*
-
   * ##### LAMP Stack
     LAMP Stack stands for Linux, Apache, MySQL, PHP/Python/Perl. Stack basically refers to developing a full-stack application (back-end and front-end) using complimentary frameworks/libraries/databaes. LAMP stack showed to be very stable and popular but due to it's decreasing community I decided against it and decided to learn a more up and coming technology.
   * ##### MEAN Stack
@@ -34,13 +31,17 @@ The front uses ExpressJS and AngularJS with Bootstrap.
     I used ngRoute to handle all the routings for my application. ngRoute provides the $routeProvider function that let's you create routes and ties a view and a controller to that route, it also injects that view into the ng-view tags meaning you could have a static header/footer and a dynamically changing body (Single Page Webapplication). I have never worked with ngRoute before and once I got the hang of it, I was surprised at how quick navigation was between pages. 
     
     I followed a strict MVC design pattern, where I separated each view, controller and factory to do specific things i.e: the home page view had a home page controller and user page view had a user page controller that was using functions declared in my user page factory. I divided my factories into different logic layers, I tried to minimize the amount of replicated code into reusable functions in my factories that I could call from controllers. I found myself reusing API calls frequently within my factories, so I made a factory to handle all HTTP logic functions and referenced those functions in my other factories.
-
+    
+  * ##### Bootstrap
+    Bootstrap is a free and open-source front-end web framework for designing websites and web applications. It contains HTML- and CSS-based design templates for typography, forms, buttons, navigation and other interface components, as well as optional JavaScript extensions. Unlike many web frameworks, it concerns itself with front-end development only. [3]
+    
+    I used Bootstrap as a CSS library. Previously I had worked with Bootstrap 3, but decided to use Bootstrap 4 for this project. I choose Bootstrap because it's a very popular styling framework and I really enjoyed using it before. Bootstrap 4 was a little difficult to get used to at the start because I assumed the class names were similar to that of bootstrap 3, but after some documentation research I got the hang of it.
 
 ### Architecture
-### Back End
-#### Database Architecture
-![alt text](http://i.imgur.com/dAXxBPY.png "Logo Title Text 1")
+###
 
 
 ### References
 [1] Wikipedia - [Express.js](https://en.wikipedia.org/wiki/Express.js)
+[2] Wikpedia - [AngularJS](https://en.wikipedia.org/wiki/AngularJS)
+[3] Wikipedia - [Bootstrap](https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework))
