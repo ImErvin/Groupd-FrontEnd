@@ -61,8 +61,38 @@ AngularJS promotes the MVC design pattern and I made sure to make use of that. A
 ##### Controllers
 There are 10 controllers on my front end. My logic behind each controller was to allocate a seperate controller to each view. The controllers act as a bridge between the factories and the views while adding extra error handling logic i.e you cannot edit a project to have 3 available positions, when there are already 4 members in the project. 
 
-#### Visual Design
-There are 10 views one for each route.
+#### Views
+There are 10 views one for each route. Each view represents a "template" for webpages, these templates are either populated with data from the API using ajax http requests or post data to the API that will be represented in another template. Each template has it's own controller as mentioned above, and each controller is responsible for providing functions to display or manipulate data. I use Angulars ngBind and ngModel directives to bind data to HTML elements.
+
+### Functions
+ * Login (With handling for incorrect password)
+ * Signup (With handling for duplicated username and empty forms)
+ * Cookie based authentication 
+ * Create Project (With handling for empty forms)
+ * View Projects
+ * Edit Project (With handling for the project creator and cannot set available positions less than current member count)
+ * Delete Project (With handling for the project creator)
+ * Add a member to Project (With handling for if the user is already a member and if there are too many members in your project already)
+   * Seperate search function to find a user by username
+ * Remove a member (With handling for if you're trying to remove the project creator)
+ * Comments section in projects
+ * Bookmark a Project
+ * Edit Profile (With handling for the owner of the profile)
+ * Search Project (by name or project tags)
+ * Search Users (by username, location, first name, surname, occupation, skills)
+
+### Screen Layout
+These are prototypes built in [Axure RP](https://www.axure.com/).
+#### Main Page
+![Main Page](http://image.prntscr.com/image/c2a8b3b6a7e748b19b3c51cf02d9ad55.png "Main Page")
+#### Form Input Pages
+![Input](http://image.prntscr.com/image/3c064c963e814c7786a8eadb8d3de378.png "Input")
+#### Profile and Project Pages
+![Page](http://image.prntscr.com/image/58b9f8c53d634f439b53fd3fbe17ddef.png "Page")
+#### Search
+![Search](http://image.prntscr.com/image/7776b0ab6ff74211a14f1c2f9c67f934.png "Search")
+
+
 
 
 ### References
