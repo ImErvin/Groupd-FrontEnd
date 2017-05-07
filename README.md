@@ -6,6 +6,42 @@ Groupd was developed as my end of year project for Third Year Software Developme
 
 The idea behind Groupd was to design a social network for start up projects, where users can list or join projects that have vacant positions.
 
+### System Requirements
+###### *assuming you have the [back-end](https://github.com/imervin/groupd-backend) installed correctly*
+To run this application you'll need any operating system with [Node.js](https://nodejs.org/en/download/) installed. You will need bower and a local clone of this repository.
+
+### Installation
+1. Install Node.js
+2. Open your operating systems command prompt
+3. Ensure the node.js is working, if there is an error, make sure that step 1 is installed correctly.
+   ```Bash
+   npm -v
+   ```
+4. Install bower through npm.
+   ```Bash
+   npm install -g bower
+   ```
+5. Clone this repository to any folder on your local machine.
+   ```Bash
+   mkdir groupd
+   
+   cd groupd
+   
+   git clone https://github.com/ImErvin/Groupd-FrontEnd.git
+   ```
+6. Install packages and componenets.
+   ```Bash
+   npm install
+   
+   bower install
+   ```
+7. Run the front end
+   ```Bash
+   node server.js
+   ```
+8. Connect to the server on localhost:5000 or http://127.0.0.1:5000
+9. Run the back-end to allow login/signup functionality.
+
 ## Architecture
 
 ### Planning Phase
@@ -25,7 +61,6 @@ The back end uses Mogoose, ExpressJS and MongoDB to provide a RESTful API to que
 
 ##### *Front End*
 The front end uses ExpressJS and AngularJS with Bootstrap.
-
   * ##### Express JS
     Express.js, or simply Express, is a web application framework for Node.js, released as free and open-source software under the MIT License. It is designed for building web applications and APIs. It is the de facto standard server framework for Node.js.[1] I use express on the front end to serve a static index.html file. I previously used Python's Flask to serve my index page but decided that If I was going to use express throughout the project, I should keep the consistency and learn how to use express to serve files. My express file sets up a single root ('/') and serves my index.html file from it. I use Angular to take over from there and hande the routings using ngRoute.
     
@@ -42,8 +77,29 @@ The front end uses ExpressJS and AngularJS with Bootstrap.
     Bootstrap is a free and open-source front-end web framework for designing websites and web applications. It contains HTML- and CSS-based design templates for typography, forms, buttons, navigation and other interface components, as well as optional JavaScript extensions. Unlike many web frameworks, it concerns itself with front-end development only. [3]
     
     I used Bootstrap as a CSS library. Previously I had worked with Bootstrap 3, but decided to use Bootstrap 4 for this project. I choose Bootstrap because it's a very popular styling framework and I really enjoyed using it before. Bootstrap 4 was a little difficult to get used to at the start because I assumed the class names were similar to that of bootstrap 3, but after some documentation research I got the hang of it.
+
+##### *Developing Enviroment*
+  * ##### NPM
+    NPM is a package manager that runs with node.js. It's a gateway to installing, updating and uninstalling packages available to node.js.
     
+    I used NPM to install all necessary directives in my package.json, these include express.js to host my static index.html.
+  * ##### Bower
+    Bower is a component manager that runs with node.js to install components for front end such as AngularJS, Bootstrap etc.
+    
+    I used bower to install all necessary components in my bower.json, these include AngularJS, Bootstrap and jquery.
 ### Design
+
+### Screen Layout
+#### Prototypes
+These prototypes are built in [Axure RP](https://www.axure.com/).
+##### Main Page
+![Main Page](http://image.prntscr.com/image/c2a8b3b6a7e748b19b3c51cf02d9ad55.png "Main Page")
+##### Form Input Pages
+![Input](http://image.prntscr.com/image/3c064c963e814c7786a8eadb8d3de378.png "Input")
+##### Profile and Project Pages
+![Page](http://image.prntscr.com/image/58b9f8c53d634f439b53fd3fbe17ddef.png "Page")
+##### Search
+![Search](http://image.prntscr.com/image/7776b0ab6ff74211a14f1c2f9c67f934.png "Search")
 
 #### MVC Design
 AngularJS promotes the MVC design pattern and I made sure to make use of that. As I mentioned above I divided my controllers,views and factories into layers. I thought about *what kind of factories and controllers would I need?*
@@ -81,19 +137,25 @@ There are 10 views one for each route. Each view represents a "template" for web
  * Search Project (by name or project tags)
  * Search Users (by username, location, first name, surname, occupation, skills)
 
-### Screen Layout
-These are prototypes built in [Axure RP](https://www.axure.com/).
-#### Main Page
-![Main Page](http://image.prntscr.com/image/c2a8b3b6a7e748b19b3c51cf02d9ad55.png "Main Page")
-#### Form Input Pages
-![Input](http://image.prntscr.com/image/3c064c963e814c7786a8eadb8d3de378.png "Input")
-#### Profile and Project Pages
-![Page](http://image.prntscr.com/image/58b9f8c53d634f439b53fd3fbe17ddef.png "Page")
-#### Search
-![Search](http://image.prntscr.com/image/7776b0ab6ff74211a14f1c2f9c67f934.png "Search")
+### Limitations and Known Bugs
+The main limitation was time, there were a lot of other features that I would have loved to add but time was limited.
 
+There are a couple of minor bugs.
+ * After 30 minutes, the cookie expires.
+ * After 30 minutes, the cookie expires and the header doesn't update untill you reload the page.
+ * The email doesn't get verified.
+ * Star rating on profiles does not work.
+ * Message button on profiles does not work.
 
+### Future Development
+As I mentioned above, there are quite a few different features I would like to add in the future.
 
+* A rating system, the front end currently displays 5 stars on each profile, but future development will allow users to rate each other out of 5 stars. The foundation for this is set out in the front end and back end, the schema is storing blank values for ratings.
+* A messenger system, the front end currently displays a "message" button on users profiles but has no functionality. Future development will allow users to IM eachother.
+* Implement githubs api to populate a users "github card".
+
+### Conclusion
+The technologies I used were very interesting and I learned a lot. I can now confidently say I have a very good understanding of AngularJS and it's best practises. 
 
 ### References
 [1] Wikipedia - [Express.js](https://en.wikipedia.org/wiki/Express.js)
