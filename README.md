@@ -1,5 +1,9 @@
-# Groupd Web Application
+# Groupd Front End
 ##### By Ervin Mamutov
+
+<p align="center">
+  <img src="https://github.com/ImErvin/Groupd-FrontEnd/blob/master/static/images/mainLogo6.png?raw=true" />
+</p>
 
 ### Introduction
 Groupd was developed as my end of year project for Third Year Software Development. The aim of this project was to combine the knowledge I gained over the three years of college and develop an application using new technologies. This is the design document for the web application. There are three parts to Groupd, the web application, the RESTful API and the mobile application. Groupd was developed by [Tara O'Kelly](https://github.com/taraokelly) and me. I was responsible for developing the web application, while Tara was responsible for the mobile application. We both designed a common RESTful API that both of our applications use to store and retrieve data.
@@ -155,9 +159,27 @@ As I mentioned above, there are quite a few different features I would like to a
 * Implement githubs api to populate a users "github card".
 
 ### Conclusion
-The technologies I used were very interesting and I learned a lot. I can now confidently say I have a very good understanding of AngularJS and it's best practises. 
+The technologies I used were very interesting and I learned a lot. After doing this project I confidently say I have a very good understanding of AngularJS and it's best practises. I improved my understanding of node.js and how packet managers work and will definitely be using packet managers for every project. Bootstrap 4 really helped out in making the website responsive and it was relitevely easy to use.
+
+If I were to do this project again, I would consider using angular2 instead of angularjs because it's a newer technology. Because the project is heavy on the styling aspect, I would use SASS or LESS instead of CSS. All in all it was a great learning experience.
+
+### Screenshots of the application
+#### Main Page
+![Main Page](http://image.prntscr.com/image/28780fd1f84549d48c69bd60cbd50403.png)
+#### Home Page
+![Home Page](http://image.prntscr.com/image/8fe3349203de43428ff4d97208a160a6.png)
+#### Current user's - Profile Page
+![Profile Page](http://image.prntscr.com/image/20932916782f4bd78ab591bd74b11552.png)
+#### Not current user's - Profile Page
+![Nonauth Profile Page](http://image.prntscr.com/image/570d58aa6b404f20a54e57be8e04f0a9.png)
+#### Project creator - Project Page
+![Creator](http://image.prntscr.com/image/3ede117c946d4d77b8ec655561ab7e92.png)
+#### Not the project creator - Project Page
+![Project page](http://image.prntscr.com/image/2cbbc6d653684bb48dd00518c0333713.png)
+#### Edit Project - Form Page
+![Edit Project](http://image.prntscr.com/image/373100010e5b4ab8b5b482b7e410ae04.png)
 
 ### References
-[1] Wikipedia - [Express.js](https://en.wikipedia.org/wiki/Express.js)
-[2] Wikpedia - [AngularJS](https://en.wikipedia.org/wiki/AngularJS)
+[1] Wikipedia - [Express.js](https://en.wikipedia.org/wiki/Express.js) <br/>
+[2] Wikpedia - [AngularJS](https://en.wikipedia.org/wiki/AngularJS) <br/>
 [3] Wikipedia - [Bootstrap](https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework))
