@@ -178,6 +178,8 @@ If I were to do this project again, I would consider using angular2 instead of a
 ![Project page](http://image.prntscr.com/image/2cbbc6d653684bb48dd00518c0333713.png)
 #### Edit Project - Form Page
 ![Edit Project](http://image.prntscr.com/image/373100010e5b4ab8b5b482b7e410ae04.png)
+#### Search Page
+![Search](http://image.prntscr.com/image/c1d2e0199f7d4f998f948d3b607128cf.png)
 
 ### References
 [1] Wikipedia - [Express.js](https://en.wikipedia.org/wiki/Express.js) <br/>
